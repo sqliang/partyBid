@@ -17,7 +17,8 @@ angular.module('jjjApp')
 
         var arr=JSON.parse(localStorage['activitykey']);
         var actlength=JSON.parse(localStorage['activitykey']).length;
-        console.log(arr[actlength-1]);
+
+        //console.log(arr[actlength-1]);
         //$scope.bm_activity_name=arr[actlength-1];
         //$scope.bm_activity_name=localStorage.getItem('click_activity');
         //设置表明界面的标题
