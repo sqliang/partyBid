@@ -1,0 +1,16 @@
+<header class="header">
+    创建活动
+    <button ng-show="ifnotback" class="btn btn-primary header-left" ng-click='back_to_activity_item()'>返回</button>
+</header>
+
+<div class="wrapper">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h4>活动名称</h4>
+    <input class="input-full" type="text" ng-model="activity_name" placeholder="输入活动名称" >
+    <br/>
+    <br/>
+    <button class="btn btn-default btn-lg btn-block" ng-click="back_to_baoming()" ng-disabled="!activity_name">创建</button>
+</div>
