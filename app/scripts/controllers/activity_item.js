@@ -15,7 +15,15 @@ angular.module('jjjApp')
             'Karma'
         ];
 
+        if(localStorage.length==0){
+            var arr=[];
+            localStorage['activitykey']=JSON.stringify(arr);
+        }
+
         var arr1=JSON.parse(localStorage['activitykey']);
+        if(arr1.length==0){
+            $location.path('/create_activity')
+        }
         arr1 = arr1.reverse();
         $scope.activity_names=arr1;
 
@@ -24,7 +32,9 @@ angular.module('jjjApp')
         }
 
         $scope.choose_activity =function(activity){
-            localStorage.setItem('click_activity',activity);
+
+            //存储我们所点击的活动！跳转到该活动页面！
+            //localStorage.setItem('click_activity',activity);
             //$scope.bm_activity_name=localStorage.getItem('click_activity');
             $location.path('/bm');
         }

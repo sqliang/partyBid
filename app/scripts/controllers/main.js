@@ -6,8 +6,10 @@ angular.module('jjjApp')
             'AngularJS',
             'Karma'
         ];
-
-        $scope.back_to_create_activity=function(){
-            $location.path('/bm');
+        if(JSON.parse(localStorage['activitykey']).length==0){
+            $location.path('/create_activity');
+        }
+        else{
+            $location.path('/item');
         }
     });

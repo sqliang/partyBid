@@ -15,10 +15,12 @@ angular.module('jjjApp')
             'Karma'
         ];
 
+
         if(localStorage.length==0){
             var arr=[];
             localStorage['activitykey']=JSON.stringify(arr);
         }
+
         if (JSON.parse(localStorage['activitykey']).length==0){
             $scope.ifnotback=false;
         }
@@ -26,17 +28,18 @@ angular.module('jjjApp')
             $scope.ifnotback=true;
         }
 
+
+
         $scope.back_to_baoming=function(){
             var tempjson= JSON.parse(localStorage['activitykey']);
             tempjson.push($scope.activity_name);
             localStorage['activitykey']=JSON.stringify(tempjson);
-            localStorage.setItem('click_activity',$scope.activity_name);
-
+            
+            //存储我们所点击的活动！跳转到该活动页面！
+            //localStorage.setItem('click_activity',$scope.activity_name);
             $location.path('/bm');
 
         }
-
-
         $scope.back_to_activity_item=function(){
             $location.path('/item');
 

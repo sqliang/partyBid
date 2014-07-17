@@ -19,13 +19,20 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
+
+
+//      .when('/', {
+//        templateUrl: 'views/create_activity.html',
+//        controller: 'create_activityCtrl'
+//      })
       .when('/', {
+        templateUrl: 'views/activity_item.html',
+        controller: 'ItemCtrl'
+      })
+
+      .when('/create_activity', {
         templateUrl: 'views/create_activity.html',
         controller: 'create_activityCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
         .when('/item', {
             templateUrl:'views/activity_item.html',
