@@ -16,10 +16,10 @@ angular.module('jjjApp')
         ];
 
 
-        if(localStorage.length==0){
-            var arr=[];
-            localStorage['activitykey']=JSON.stringify(arr);
-        }
+//        if(localStorage.length==0){
+//            var arr=[];
+//            localStorage['activitykey']=JSON.stringify(arr);
+//        }
 
         if (JSON.parse(localStorage['activitykey']).length==0){
             $scope.ifnotback=false;
