@@ -20,6 +20,7 @@ angular.module('jjjApp')
             localStorage['activitykey']=JSON.stringify(arr);
         }
 
+        //将活动列表显示出来
         var arr1=JSON.parse(localStorage['activitykey']);
         if(arr1.length==0){
             $location.path('/create_activity')
@@ -27,10 +28,11 @@ angular.module('jjjApp')
         arr1 = arr1.reverse();
         $scope.activity_names=arr1;
 
+        //返回按钮的实现功能
         $scope.back_to_create_activity=function(){
             $location.path('/create_activity');
         }
-
+        //点击开始或结束按钮的函数
         $scope.choose_activity =function(activity){
 
             //存储我们所点击的活动！跳转到该活动页面！
