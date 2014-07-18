@@ -6,6 +6,8 @@ angular.module('jjjApp')
             'AngularJS',
             'Karma'
         ];
+        //清除所有localStorage,现在没法使用
+        //localStorage.clear();
 
         if(localStorage.length==0){
             var arr=[];
