@@ -38,7 +38,7 @@ angular.module('jjjApp')
             var flag=0;
             var tempjson= JSON.parse(localStorage['activitykey']);
 
-            for(var i=0;i<tempjson.length-1;i++){
+            for(var i=0;i<tempjson.length;i++){
                 if($scope.activity_name==tempjson[i]){
                     flag=1;
                     $scope.new_activity_name="活动名称重复";
