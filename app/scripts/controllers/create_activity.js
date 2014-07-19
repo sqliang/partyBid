@@ -27,12 +27,6 @@ angular.module('jjjApp')
         else {
             $scope.ifnotback=true;
         }
-//        var temp = $scope.activity_name;
-//        console.log(typeof(temp));
-//        if(temp==undefined){
-//            $scope.new_activity_name="";
-//        }
-
 
         $scope.back_to_baoming=function(){
             var flag=0;

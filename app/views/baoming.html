@@ -4,6 +4,16 @@
     <button ng-show="true" class="btn btn-primary header-right" ng-click='start_activity_btn()'>{{start_done_btn}}</button>
 </header>
 
+
+<div id="wrapper" class="wrapper">
+    <ul class="list-style-2">
+        <li ng-repeat="user in users_data">
+            <h3>{{user.name}}</h3>
+            <p>13800138000</p>
+        </li>
+    </ul>
+</div>
+
 <footer>
     <ul class="footer-nav footer-nav-2tabs">
         <li><a href="javascript:"><i class="icon-group"></i><br />报名</a></li>

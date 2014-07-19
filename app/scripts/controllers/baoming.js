@@ -14,6 +14,27 @@ angular.module('jjjApp')
             'AngularJS',
             'Karma'
         ];
+        //测试，如果说受到短信，暂时用users_data代替
+        $scope.users_data = [
+            {
+                "name":"赵大"
+            },
+            {
+                "name":"钱二"
+            },
+            {
+                "name":"张三"
+            },
+            {
+                "name":"李四"
+            },
+            {
+                "name":"王五"
+            },
+            {
+                "name":"刘六"
+            }
+        ]
 
         var arr=JSON.parse(localStorage['activitykey']);
         var actlength=JSON.parse(localStorage['activitykey']).length;
