@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name jjjApp
+ * @name partyBidApp
  * @description
- * # jjjApp
+ * # partyBidApp
  *
  * Main module of the application.
  */
 angular
-  .module('jjjApp', [
+  .module('partyBidApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -20,28 +20,30 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
 
-
-//      .when('/', {
-//        templateUrl: 'views/create_activity.html',
-//        controller: 'create_activityCtrl'
-//      })
       .when('/', {
-        templateUrl: 'views/activity_item.html',
-        controller: 'ItemCtrl'
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
       })
 
-      .when('/create_activity', {
-        templateUrl: 'views/create_activity.html',
-        controller: 'create_activityCtrl'
-      })
+        .when('/create', {
+            templateUrl: 'views/ActivityCreate.html',
+            controller: 'CreateControl'
+        })
         .when('/item', {
-            templateUrl:'views/activity_item.html',
-            controller:'ItemCtrl'
+            templateUrl: 'views/ActivityItem.html',
+            controller: 'ItemControl'
         })
-        .when('/bm', {
-            templateUrl:'views/baoming.html',
-            controller:'BmCtrl'
+
+        .when('/sign_up', {
+            templateUrl: 'views/ActivitySignUp.html',
+            controller: 'SignUpControl'
         })
+
+
+        .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

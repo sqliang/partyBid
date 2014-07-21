@@ -2,18 +2,19 @@
 
 /**
  * @ngdoc function
- * @name jjjApp.controller:MainCtrl
+ * @name partyBidApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the jjjApp
+ * Controller of the partyBidApp
  */
-angular.module('jjjApp')
-    .controller('BmCtrl', function ($scope,$location) {
+angular.module('partyBidApp')
+    .controller('SignUpControl', function ($scope,$location) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
+
         //测试，如果说受到短信，暂时用users_data代替
         $scope.users_data = [
             {
@@ -48,7 +49,7 @@ angular.module('jjjApp')
 
         $scope.back_to_activity_item=function(){
 
-        $location.path('/item');
+            $location.path('/item');
         }
 
         $scope.start_activity_btn=function (){
@@ -71,5 +72,4 @@ angular.module('jjjApp')
 
             }
         }
-
     });

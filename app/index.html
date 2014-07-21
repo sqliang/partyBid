@@ -12,25 +12,31 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-
-      <!--<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">-->
-      <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-responsive.css" >-->
-      <!--<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.css">-->
+    <!--<link rel="stylesheet" href="styles/main.css">-->
       <link href="styles/bootstrap.min.css" rel="stylesheet" media="screen">
       <link href="styles/font-awesome.min.css" rel="stylesheet" media="screen">
       <link href="styles/android.css" rel="stylesheet" media="screen">
-      <!--<link href="styles/bootstrap.css" rel="stylesheet" media="screen">-->
-
     <!-- endbuild -->
+
+
+
   </head>
-  <body ng-app="jjjApp">
+  <body ng-app="partyBidApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <!--自己修改开始-->
     <div class="container">
-
+      <!--<div class="header">-->
+        <!--<ul class="nav nav-pills pull-right">-->
+          <!--<li class="active"><a ng-href="#">Home</a></li>-->
+          <!--<li><a ng-href="#/about">About</a></li>-->
+          <!--<li><a ng-href="#">Contact</a></li>-->
+        <!--</ul>-->
+        <!--<h3 class="text-muted">partyBid</h3>-->
+      <!--</div>-->
 
       <div ng-view=""></div>
 
@@ -38,6 +44,7 @@
         <!--<p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>-->
       <!--</div>-->
     </div>
+    <!--自己修改结束-->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -53,15 +60,14 @@
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
-    <script src="../bower_components/es5-shim/es5-shim.js"></script>
-    <script src="../bower_components/json3/lib/json3.min.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <!-- endbuild -->
 
-    <!-- build:js(.) scripts/vendor.js -- >
+    <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -75,13 +81,13 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/activity_item.js"></script>
-        <script src="scripts/controllers/baoming.js"></script>
-        <script src="scripts/controllers/create_activity.js"></script>
-
+        <script src="scripts/controllers/ActivityCreate.js"></script>
+        <script src="scripts/controllers/ActivityItem.js"></script>
+        <script src="scripts/controllers/ActivitySignUp.js"></script>
         <!-- endbuild -->
 </body>
 </html>

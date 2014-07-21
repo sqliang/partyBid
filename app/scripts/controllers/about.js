@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name jjjApp.controller:AboutCtrl
+ * @name partyBidApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the jjjApp
+ * Controller of the partyBidApp
  */
-angular.module('jjjApp')
+angular.module('partyBidApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

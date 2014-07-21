@@ -2,19 +2,18 @@
 
 /**
  * @ngdoc function
- * @name jjjApp.controller:MainCtrl
+ * @name partyBidApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the jjjApp
+ * Controller of the partyBidApp
  */
-angular.module('jjjApp')
-    .controller('create_activityCtrl', function ($scope, $location) {
+angular.module('partyBidApp')
+    .controller('CreateControl', function ($scope,$location) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
-
 
 //        if(localStorage.length==0){
 //            var arr=[];
@@ -46,7 +45,7 @@ angular.module('jjjApp')
 
                 //存储我们所点击的活动！跳转到该活动页面！
                 //localStorage.setItem('click_activity',$scope.activity_name);
-                $location.path('/bm');
+                $location.path('/sign_up');
             }
         }
         //
