@@ -9,11 +9,6 @@
  */
 angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
 
         //测试，如果说受到短信，暂时用users_data代替
         $scope.users_data = [
@@ -48,6 +43,7 @@ angular.module('partyBidApp')
         $scope.start_done_btn="开始";
 
         $scope.back_to_activity_item=function(){
+            
 
             $location.path('/item');
         }
