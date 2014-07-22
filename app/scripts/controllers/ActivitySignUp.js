@@ -10,11 +10,15 @@
 angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
 
+        var during_name= JSON.parse(localStorage['during_activity']);
+        console.log(during_name);
+        var result=JSON.parse(localStorage[during_name])[0];
+        var result=result.messages[0];
+        $scope.users_data=result;
 
+        //console.log(result);
 
-
-        var result=JSON.parse(localStorage['users']);
-        $scope.users_data=result.messages;
+        //$scope.users_data=result.messages;
 
         //console.log(result.messages);
 //        var result_name=result.messages[1].message.slice(2);
@@ -24,9 +28,6 @@ angular.module('partyBidApp')
         var arr=JSON.parse(localStorage['activitykey']);
         var actlength=JSON.parse(localStorage['activitykey']).length;
 
-        //console.log(arr[actlength-1]);
-        //$scope.bm_activity_name=arr[actlength-1];
-        //$scope.bm_activity_name=localStorage.getItem('click_activity');
         //设置表明界面的标题
         $scope.bm_activity_name="报名";
         $scope.start_done_btn="开始";
