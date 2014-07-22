@@ -12,19 +12,15 @@ AddUserToActivity.prototype.save = function (json_message) {
         JSON.parse(localStorage[this.name])
     }catch(err){
         var arr=[];
-        arr.push(json_message);
-        console.log(this.name);
         localStorage[this.name]=JSON.stringify(arr);
     }
-//    var result = JSON.parse(localStorage[this.name]);
-//    result.push(json_message);
-//    console.log(result.messages[0]);
-    //console.log(JSON.stringify(json_message));
-
-
-
-    //localStorage.setItem("restaurant_name", this.name);
-    //console.log(this.name);
+    var result = JSON.parse(localStorage[this.name])
+    var name = json_message.messages[0].message.slice(2);
+    var telphone = json_message.messages[0].phone;
+    var price = 0;
+    var buildarr={name:name,phone:telphone,price:price};
+    result.push(buildarr);
+    localStorage[this.name]=JSON.stringify(result);
 
 }
 

@@ -23,8 +23,6 @@ var native_accessor = {
         //console.log(phone_number);
         //AddUserToActivity.
         //localStorage['users']=JSON.stringify(json_message||'[]');
-
-
     }
 };
 

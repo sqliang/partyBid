@@ -7,10 +7,10 @@
 
 <div id="wrapper" class="wrapper">
     <ul class="list-style-2">
-        <!--<li class="clearfix btn-default" ng-repeat="user in users_data">-->
-        <li class="clearfix btn-default">
-            <h3>{{users_data.message.slice(2)}}</h3>
-            <i>{{users_data.phone}}</i>
+        <li class="clearfix btn-default" ng-repeat="user in users_data">
+        <!--<li class="clearfix btn-default">-->
+            <h3>{{user.name}}</h3>
+            <i>{{user.phone}}</i>
         </li>
     </ul>
 </div>

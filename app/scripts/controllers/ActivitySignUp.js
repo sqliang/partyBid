@@ -11,19 +11,12 @@ angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
 
         var during_name= JSON.parse(localStorage['during_activity']);
-        console.log(during_name);
-        var result=JSON.parse(localStorage[during_name])[0];
-        var result=result.messages[0];
+//        console.log(during_name);
+        var result=JSON.parse(localStorage[during_name]);
+//        console.log(result)
+//        var result=result.messages[0];
         $scope.users_data=result;
 
-        //console.log(result);
-
-        //$scope.users_data=result.messages;
-
-        //console.log(result.messages);
-//        var result_name=result.messages[1].message.slice(2);
-//        $scope.users_data=result.messages[1];
-//        $scope.username=result_name;
 
         var arr=JSON.parse(localStorage['activitykey']);
         var actlength=JSON.parse(localStorage['activitykey']).length;
@@ -39,8 +32,6 @@ angular.module('partyBidApp')
         }
 
         $scope.start_activity_btn=function (){
-
-
             var temp=$scope.start_done_btn;
             if(temp=="开始")
             {
@@ -53,7 +44,6 @@ angular.module('partyBidApp')
                 }
                 else{
                     $scope.start_done_btn = "结束";
-
                 }
 
             }

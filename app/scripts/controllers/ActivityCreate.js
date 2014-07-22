@@ -32,9 +32,10 @@ angular.module('partyBidApp')
                 $scope.new_activity_name="";
                 tempjson.push($scope.activity_name);
                 localStorage['activitykey']=JSON.stringify(tempjson);
-
+                //解决无人报名，内容为空，出错的情况
+                localStorage[$scope.activity_name]=JSON.stringify([]);
                 //存储我们所点击的活动！跳转到该活动页面！
-                //localStorage.setItem('click_activity',$scope.activity_name);
+                localStorage['during_activity']=JSON.stringify($scope.activity_name);
                 $location.path('/sign_up');
             }
         }
