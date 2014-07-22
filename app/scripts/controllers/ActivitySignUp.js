@@ -10,27 +10,11 @@
 angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
 
-        //测试，如果说受到短信，暂时用users_data代替
-        $scope.users_data = [
-            {
-                "name":"赵大"
-            },
-            {
-                "name":"钱二"
-            },
-            {
-                "name":"张三"
-            },
-            {
-                "name":"李四"
-            },
-            {
-                "name":"王五"
-            },
-            {
-                "name":"刘六"
-            }
-        ]
+
+        var result=JSON.parse(localStorage['users']);
+        var result_name=result.messages[0].message.slice(2);
+        $scope.users_data=result.messages[0];
+        $scope.username=result_name;
 
         var arr=JSON.parse(localStorage['activitykey']);
         var actlength=JSON.parse(localStorage['activitykey']).length;
@@ -43,7 +27,7 @@ angular.module('partyBidApp')
         $scope.start_done_btn="开始";
 
         $scope.back_to_activity_item=function(){
-            
+
 
             $location.path('/item');
         }
