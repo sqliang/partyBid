@@ -11,10 +11,15 @@ angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
 
 
+
+
         var result=JSON.parse(localStorage['users']);
-        var result_name=result.messages[0].message.slice(2);
-        $scope.users_data=result.messages[0];
-        $scope.username=result_name;
+        $scope.users_data=result.messages;
+
+        //console.log(result.messages);
+//        var result_name=result.messages[1].message.slice(2);
+//        $scope.users_data=result.messages[1];
+//        $scope.username=result_name;
 
         var arr=JSON.parse(localStorage['activitykey']);
         var actlength=JSON.parse(localStorage['activitykey']).length;

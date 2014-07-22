@@ -13,6 +13,9 @@ angular.module('partyBidApp')
     if(localStorage.length==0){
         var arr=[];
         localStorage['activitykey']=JSON.stringify(arr);
+        localStorage['during_activity']=JSON.stringify(arr);
+        localStorage['users']=JSON.stringify(arr);
+
       }
     if(JSON.parse(localStorage['activitykey']).length==0){
         $location.path('/create');

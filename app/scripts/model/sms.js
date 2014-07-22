@@ -3,7 +3,7 @@
 var native_accessor = {
     send_sms: function (phone, message) {
 //        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-        console.log(phone, message);
+        //console.log(phone, message);
     },
 
     receive_message: function (json_message) {
@@ -11,12 +11,18 @@ var native_accessor = {
             this.process_received_message(json_message);
         }
     },
-
+//收到短信之后的处理函数
     process_received_message: function (json_message) {
+
+        var result=JSON.parse(localStorage['during_activity']);
+        //新建一个对象,用来将联系人存储到相应的活动
+        var addtoactivity = new AddUserToActivity(result);
+        addtoactivity.save(json_message);
         //console.log(json_message);
         //var phone_number=json_message.messages[0].phone;
         //console.log(phone_number);
-        localStorage['users']=JSON.stringify(json_message||'[]');
+        //AddUserToActivity.
+        //localStorage['users']=JSON.stringify(json_message||'[]');
 
 
     }
@@ -29,7 +35,7 @@ function notify_message_received(message_json) {
     //console.log(JSON.stringify(message_json));
     //JSON.stringify(message_json);
     //alert(JSON.stringify(message_json.messages));
-    //native_accessor.receive_message(message_json);
+    native_accessor.receive_message(message_json);
     //var phone_number=message_json.messages[0].phone;
     //console.log(phone_number);
 }
