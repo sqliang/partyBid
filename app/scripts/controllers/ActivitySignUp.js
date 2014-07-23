@@ -34,23 +34,6 @@ angular.module('partyBidApp')
             $scope.button_enable=false;
             $scope.start_done_btn="开始";
         }
-//        if(button_status==1 && (current_activity == during_activity )){
-//            $scope.button_enable=true;
-//            $scope.start_done_btn="结束";
-//
-//        }
-////        $scope.button_enable=false;
-//        if(button_status == 1 && (last_activity !=current_activity)){
-//            $scope.button_enable=true;
-//            $scope.start_done_btn="开始";
-//        }
-//        else if(button_status==2){
-//            $scope.button_enable=false;
-//            $scope.start_done_btn="结束";
-//        }
-//        else {
-//            ;
-//        }
 
         //返回按钮函数实现
         $scope.back_to_activity_item=function(){
