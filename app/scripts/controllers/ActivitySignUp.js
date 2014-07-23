@@ -61,8 +61,6 @@ angular.module('partyBidApp')
                 if(cancel_yes_no==true) {
                     localStorage['during_activity_or_not']=JSON.stringify('2');
                     $scope.start_done_btn = "开始";
-//            if (JSON.parse(localStorage[activity]) != JSON.parse(localStorage['before_activity'])){
-                localStorage['during_activity_or_not']=JSON.stringify(0);
 //            }
                     localStorage['start_end_button_status']=JSON.stringify(1);
                 }
