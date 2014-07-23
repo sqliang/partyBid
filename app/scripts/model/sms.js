@@ -1,9 +1,18 @@
 //notify_message_received({"messages":[{"create_date":"Tue Jan 15 15:28:44 格林尼治标准时间+0800 2013","message":"bm仝键","phone":"18733171780","name":"张柯33"}]})
 //notify_message_received({"messages":[{"create_date":"Tue Jan 15 15:28:44 格林尼治标准时间+0800 2013","message":"jj308","phone":"18733171780"}]})
 var native_accessor = {
-    send_sms: function (phone, message) {
+    send_sms: function (result,phone, message) {
+        //回发函数
 //        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-        //console.log(phone, message);
+        if(result=='0'){
+            console.log('活动未开始!');
+        }
+        else if (result=='1'){
+            console.log('恭喜！报名成功');
+        }
+        else {
+            console.log('活动结束!');
+        }
     },
 
     receive_message: function (json_message) {
@@ -18,11 +27,6 @@ var native_accessor = {
         //新建一个对象,用来将联系人存储到相应的活动
         var addtoactivity = new AddUserToActivity(result);
         addtoactivity.save(json_message);
-        //console.log(json_message);
-        //var phone_number=json_message.messages[0].phone;
-        //console.log(phone_number);
-        //AddUserToActivity.
-        //localStorage['users']=JSON.stringify(json_message||'[]');
     }
 };
 

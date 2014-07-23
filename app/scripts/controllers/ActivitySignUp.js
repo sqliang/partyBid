@@ -11,10 +11,7 @@ angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
 
         var during_name= JSON.parse(localStorage['during_activity']);
-//        console.log(during_name);
         var result=JSON.parse(localStorage[during_name]);
-//        console.log(result)
-//        var result=result.messages[0];
         $scope.users_data=result;
 
 
@@ -36,14 +33,23 @@ angular.module('partyBidApp')
             if(temp=="开始")
             {
                 $scope.start_done_btn="结束";
+                //有活动正在进行
+                localStorage['during_activity_or_not']=JSON.stringify('1');
+                //存储按钮状态,0代表结束状态，1代表开始状态.
+                localStorage['start_end_button_status']=JSON.stringify(0);
+
             }
             if(temp=="结束"){
                 var cancel_yes_no=confirm("确认要结束本次报名吗?");
                 if(cancel_yes_no==true) {
+                    localStorage['during_activity_or_not']=JSON.stringify('2');
                     $scope.start_done_btn = "开始";
+                    localStorage['start_end_button_status']=JSON.stringify(1);
                 }
                 else{
                     $scope.start_done_btn = "结束";
+                    localStorage['start_end_button_status']=JSON.stringify(0);
+
                 }
 
             }
