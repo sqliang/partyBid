@@ -9,9 +9,7 @@
  */
 angular.module('partyBidApp')
   .controller('MainCtrl', function ($scope,$location) {
-
-        localStorage.clear();
-
+      
     if(localStorage.length==0){
         var arr=[];
         localStorage['activitykey']=JSON.stringify(arr);
