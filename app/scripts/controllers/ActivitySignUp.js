@@ -18,6 +18,8 @@ angular.module('partyBidApp')
         //打开时设置位开始
         $scope.start_done_btn="开始";
 
+        //这里还有一些问题
+
         var current_activity=JSON.parse(localStorage['current_activity']);
         var during_activity = JSON.parse(localStorage['during_activity']);
         var button_status = JSON.parse(localStorage['during_activity_or_not']);

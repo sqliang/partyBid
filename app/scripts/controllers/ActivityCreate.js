@@ -36,6 +36,8 @@ angular.module('partyBidApp')
                 localStorage[$scope.activity_name]=JSON.stringify([]);
                 //存储我们所点击的活动！跳转到该活动页面！
                 localStorage['during_activity']=JSON.stringify($scope.activity_name);
+                //还应该加上条件，当无活动进行时才能讲or_not设置为零
+                localStorage['during_activity_or_not']=JSON.stringify('0');
                 $location.path('/sign_up');
             }
         }

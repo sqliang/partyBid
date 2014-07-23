@@ -34,13 +34,8 @@ angular.module('partyBidApp')
             //存储我们所点击的活动！跳转到该活动页面！
             localStorage['during_activity']=JSON.stringify(activity);
             var result = JSON.parse(localStorage[activity]);
-            //当有活动时，活动结束，无活动时，可以开始
-            if(result.length==0){
-                localStorage['during_activity_or_not']=JSON.stringify('0');
-            }
-            else{
-                localStorage['during_activity_or_not']=JSON.stringify('2');
-            }
+            var result1= JSON.parse(localStorage['current_activity']);
+            var result2= JSON.parse(localStorage['during_activity']);
             $location.path('/sign_up');
         }
     });
