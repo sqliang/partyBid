@@ -50,7 +50,3 @@ AddUserToActivity.prototype.save = function (json_message) {
 
 
 }
-
-AddUserToActivity.get_chose_restaurant_name = function () {
-    return localStorage.getItem('restaurant_name');
-}

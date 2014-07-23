@@ -10,10 +10,13 @@
 angular.module('partyBidApp')
   .controller('MainCtrl', function ($scope,$location) {
 
+        localStorage.clear();
+
     if(localStorage.length==0){
         var arr=[];
         localStorage['activitykey']=JSON.stringify(arr);
         localStorage['during_activity']=JSON.stringify(arr);
+        localStorage['current_activity']=JSON.stringify(arr);
 //        localStorage['users']=JSON.stringify(arr);
         //初始化设置没有活动在进行
         localStorage['during_activity_or_not']=JSON.stringify(0);
