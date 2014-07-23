@@ -9,6 +9,7 @@
  */
 angular.module('partyBidApp')
     .controller('ItemControl', function ($scope,$location) {
+
         if(localStorage.length==0){
             var arr=[];
             localStorage['activitykey']=JSON.stringify(arr);
@@ -19,6 +20,7 @@ angular.module('partyBidApp')
         if(arr1.length==0){
             $location.path('/create')
         }
+        //给正在进行的活动添加背景色
         arr1 = arr1.reverse();
         $scope.activity_names=arr1;
 
@@ -34,9 +36,9 @@ angular.module('partyBidApp')
 
 //            localStorage['before_activity']=JSON.stringify(JSON.parse(localStorage['during_activity']));
             //当我们所点击的是另外一个活动时，我们讲活动状态设置成未开始
-            if (JSON.parse(localStorage[activity]) != JSON.parse(localStorage['before_activity'])){
-                localStorage['during_activity_or_not']=JSON.stringify(0);
-            }
+//            if (JSON.parse(localStorage[activity]) != JSON.parse(localStorage['before_activity'])){
+//                localStorage['during_activity_or_not']=JSON.stringify(0);
+//            }
 
             $location.path('/sign_up');
         }

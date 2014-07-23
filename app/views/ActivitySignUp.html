@@ -1,7 +1,7 @@
 <header class="header">
     报名({{user_num}}人)
     <button ng-show="true" class="btn btn-primary header-left" ng-click='back_to_activity_item()'>返回</button>
-    <button ng-show="true" class="btn btn-primary header-right" ng-click='start_activity_btn()'>{{start_done_btn}}</button>
+    <button ng-show="true" ng-disabled="button_enable" class="btn btn-primary header-right" ng-click='start_activity_btn()'>{{start_done_btn}}</button>
 </header>
 
 
@@ -17,7 +17,7 @@
 
 <footer>
     <ul class="footer-nav footer-nav-2tabs">
-        <li><a href="javascript:"><i class="icon-group"></i><br />报名</a></li>
+        <li><a href="javascript:" ng-disabled="true"><i class="icon-group"></i><br />报名</a></li>
         <li><a href="javascript:"><i class="icon-list"></i><br />竞价</a></li>
     </ul>
 </footer>
