@@ -13,19 +13,23 @@ angular.module('partyBidApp')
         var during_name= JSON.parse(localStorage['during_activity']);
         var result=JSON.parse(localStorage[during_name]);
         $scope.users_data=result;
+        //设置表明界面的标题,统计人数
+        $scope.user_num=result.length;
 
+        var result = JSON.parse(localStorage['start_end_button_status']);
+        //修正刷新页面时又变成原始状态
+        if(result==1){
+            $scope.start_done_btn="开始";
 
-        var arr=JSON.parse(localStorage['activitykey']);
-        var actlength=JSON.parse(localStorage['activitykey']).length;
-
-        //设置表明界面的标题
-        $scope.bm_activity_name="报名";
-        $scope.start_done_btn="开始";
-
+        }
+        else {
+            $scope.start_done_btn="结束";
+        }
+        //返回按钮函数实现
         $scope.back_to_activity_item=function(){
+           $location.path('/item');
+            localStorage['before_activity']=JSON.stringify(JSON.parse(localStorage['during_activity']));
 
-
-            $location.path('/item');
         }
 
         $scope.start_activity_btn=function (){
