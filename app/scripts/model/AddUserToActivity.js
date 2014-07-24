@@ -18,8 +18,7 @@ AddUserToActivity.prototype.save = function (json_message) {
     var telphone = json_message.messages[0].phone;
     var price = 0;
     var buildarr={name:name,phone:telphone,price:price};
-//
-//
+
     var result = JSON.parse(localStorage['during_activity']);
     result = result+'_status';
     result = JSON.parse(localStorage[result]);
@@ -29,8 +28,8 @@ AddUserToActivity.prototype.save = function (json_message) {
         var result2 = JSON.parse(localStorage[result1]);
         result2.push(buildarr);
         localStorage[result1] = JSON.stringify(result2);
+        Page_Refresh();
         native_accessor.send_sms(1);
-
 
     }
     //活动未开始
