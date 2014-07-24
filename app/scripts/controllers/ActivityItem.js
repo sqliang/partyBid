@@ -14,16 +14,21 @@ angular.module('partyBidApp')
             var arr=[];
             localStorage['activitykey']=JSON.stringify(arr);
         }
+//        console.log($scope.activity);
 
         //将活动列表显示出来
+//***********************************************************
         var arr1=JSON.parse(localStorage['activitykey']);
         if(arr1.length==0){
             $location.path('/create')
         }
         arr1 = arr1.reverse();
         $scope.activity_names=arr1;
-
-
+        var result = JSON.parse(localStorage['during_activity_or_not']);
+        if (result=="1"){
+            $scope.current_activity = JSON.parse(localStorage['current_activity']);
+        }
+//**************************************************
         //返回按钮的实现功能
         $scope.back_to_create_activity=function(){
             $location.path('/create');
