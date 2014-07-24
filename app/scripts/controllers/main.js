@@ -19,9 +19,9 @@ angular.module('partyBidApp')
         //初始化设置没有活动在进行
         localStorage['during_activity_or_not']=JSON.stringify(0);
         //设置报名页面的开始按钮状态
-        localStorage['start_end_button_status']=JSON.stringify(1);
+//        localStorage['start_end_button_status']=JSON.stringify(1);
         //记录上一次我们的活动
-        localStorage['before_activity']=JSON.stringify(0);
+//        localStorage['before_activity']=JSON.stringify(0);
 
       }
     if(JSON.parse(localStorage['activitykey']).length==0){

@@ -24,7 +24,7 @@ angular.module('partyBidApp')
             $scope.button_enable=false;
             $scope.start_done_btn="结束";
         }
-        if (result=="end") {
+        if (result=="end" || result=="unstart") {
             $scope.button_enable=true;
             $scope.start_done_btn="开始";
         }
@@ -51,7 +51,7 @@ angular.module('partyBidApp')
                 //有活动正在进行
                 localStorage['during_activity_or_not']=JSON.stringify('1');
                 //存储按钮状态,0代表结束状态，1代表开始状态.
-                localStorage['start_end_button_status']=JSON.stringify(0);
+//                localStorage['start_end_button_status']=JSON.stringify(0);
                 //存储当前活动的状态,存入name_status
                 var result = JSON.parse(localStorage['current_activity']);
                 result = result+'_status';
@@ -63,7 +63,7 @@ angular.module('partyBidApp')
                 if(cancel_yes_no==true) {
                     localStorage['during_activity_or_not']=JSON.stringify('2');
                     $scope.start_done_btn = "开始";
-                    localStorage['start_end_button_status']=JSON.stringify(1);
+//                    localStorage['start_end_button_status']=JSON.stringify(1);
 
                     var result = JSON.parse(localStorage['current_activity']);
                     result = result+'_status';
@@ -72,7 +72,7 @@ angular.module('partyBidApp')
                 }
                 else{
                     $scope.start_done_btn = "结束";
-                    localStorage['start_end_button_status']=JSON.stringify(0);
+//                    localStorage['start_end_button_status']=JSON.stringify(0);
 
                 }
 
