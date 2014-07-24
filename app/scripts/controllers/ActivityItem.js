@@ -20,9 +20,9 @@ angular.module('partyBidApp')
         if(arr1.length==0){
             $location.path('/create')
         }
-        //给正在进行的活动添加背景色
         arr1 = arr1.reverse();
         $scope.activity_names=arr1;
+
 
         //返回按钮的实现功能
         $scope.back_to_create_activity=function(){
@@ -33,9 +33,6 @@ angular.module('partyBidApp')
 
             //存储我们所点击的活动！跳转到该活动页面！
             localStorage['during_activity']=JSON.stringify(activity);
-            var result = JSON.parse(localStorage[activity]);
-            var result1= JSON.parse(localStorage['current_activity']);
-            var result2= JSON.parse(localStorage['during_activity']);
             $location.path('/sign_up');
         }
     });
