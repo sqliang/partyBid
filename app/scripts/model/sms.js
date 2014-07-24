@@ -5,13 +5,13 @@ var native_accessor = {
         //回发给报名者的函数
 //        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
         if(result=='0'){
-            console.log('活动未开始!');
+            console.log('活动尚未开始,请稍后');
         }
         else if (result=='1'){
             console.log('恭喜！报名成功');
         }
         else {
-            console.log('活动结束!');
+            console.log('Sorry,活动报名已结束');
         }
     },
 
