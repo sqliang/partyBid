@@ -4,11 +4,15 @@ var native_accessor = {
     send_sms: function (result,phone, message) {
         //回发给报名者的函数
 //        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-        if(result=='0'){
+        if(result=='unstart'){
             console.log('活动尚未开始,请稍后');
         }
-        else if (result=='1'){
+        else if (result=='start'){
             console.log('恭喜！报名成功');
+        }
+        else if (result=='repeat'){
+            console.log('你已报名成功！请勿重复报名!');
+
         }
         else {
             console.log('Sorry,活动报名已结束');
