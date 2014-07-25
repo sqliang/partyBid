@@ -20,6 +20,7 @@ angular.module('partyBidApp')
         result = result+'_status';
         result = JSON.parse(localStorage[result]);
         var result1 = JSON.parse(localStorage['during_activity_or_not']);
+        
         if(result=="start" && result1==1){
             $scope.button_enable=false;
             $scope.start_done_btn="结束";

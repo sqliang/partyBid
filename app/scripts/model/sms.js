@@ -22,11 +22,7 @@ var native_accessor = {
     },
 //收到短信之后的处理函数
     process_received_message: function (json_message) {
-
-        var result=JSON.parse(localStorage['during_activity']);
-        //新建一个对象,用来将联系人存储到相应的活动
-        var addtoactivity = new AddUserToActivity(result);
-        addtoactivity.save(json_message);
+        ReceiveMessage.judgemessage(json_message);
     }
 };
 
