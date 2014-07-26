@@ -44,5 +44,20 @@ ReceiveMessage.judgeRepeat=function(phone){
 	else {
 		return true;
 	}
+}
 
+ReceiveMessage.back_message=function (result,phone){
+        if(result=='unstart'){
+            native_accessor.send_sms(phone,'活动尚未开始,请稍后');
+        }
+        else if (result=='start'){
+            native_accessor.send_sms(phone,'恭喜！报名成功');
+        }
+        else if (result=='repeat'){
+            native_accessor.send_sms(phone,'你已报名成功！请勿重复报名!');
+
+        }
+        else {
+            native_accessor.send_sms(phone,'Sorry,活动报名已结束');
+        }
 }

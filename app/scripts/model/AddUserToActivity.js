@@ -9,7 +9,7 @@ AddUserToActivity.send_message = function (status,buildarr) {
         var test_repeat = ReceiveMessage.judgeRepeat(test_phone);
         if (test_repeat==true) {
             //hava a same phone in activity
-            native_accessor.send_sms('repeat');
+            ReceiveMessage.back_message('repeat',buildarr.phone);
 
         }
         else {
@@ -22,7 +22,7 @@ AddUserToActivity.send_message = function (status,buildarr) {
              localStorage[result1] = JSON.stringify(result2);
             //*************************************************
             Page_Refresh();
-            native_accessor.send_sms('start');
+            ReceiveMessage.back_message('start',buildarr.phone);
 
          }
   
@@ -30,11 +30,11 @@ AddUserToActivity.send_message = function (status,buildarr) {
     }
     //活动未开始
     else if(status=="unstart"){
-        native_accessor.send_sms('unstart');
+        ReceiveMessage.back_message('unstart',buildarr.phone);
     }
     //活动结束
     else {
-        native_accessor.send_sms('end');
+        ReceiveMessage.back_message('end',buildarr.phone);
     }
 
 }
