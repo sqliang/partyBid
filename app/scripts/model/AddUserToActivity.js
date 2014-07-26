@@ -1,5 +1,5 @@
-function AddUserToActivity(during_activity_name) {
-    this.name = during_activity_name;
+function AddUserToActivity() {
+
 }
 
 AddUserToActivity.send_message = function (status,buildarr) {
@@ -11,20 +11,20 @@ AddUserToActivity.send_message = function (status,buildarr) {
             //hava a same phone in activity
             native_accessor.send_sms('repeat');
 
-
         }
         else {
             //no same phonenum
             //**************************************************
-            var result1 = JSON.parse(localStorage['during_activity']);
-            var result2 = JSON.parse(localStorage[result1]);
-            result2.push(buildarr);
-            localStorage[result1] = JSON.stringify(result2);
+             var result1 = JSON.parse(localStorage['current_activity']);
+             var result1=result1.name;
+             var result2 = JSON.parse(localStorage[result1]);
+             result2.push(buildarr);
+             localStorage[result1] = JSON.stringify(result2);
             //*************************************************
             Page_Refresh();
             native_accessor.send_sms('start');
 
-        }
+         }
   
 
     }
@@ -39,12 +39,10 @@ AddUserToActivity.send_message = function (status,buildarr) {
 
 }
 
-AddUserToActivity.save = function (buildarr) {
+AddUserToActivity.judgestatus = function (buildarr) {
 
-    var result = JSON.parse(localStorage['during_activity']);
-    result = result+'_status';
-    result = JSON.parse(localStorage[result]);
-
-    this.send_message(result,buildarr);
+    var result = JSON.parse(localStorage['current_activity']);
+    var result=result.status;
+    AddUserToActivity.send_message(result,buildarr);
 
 }
