@@ -38,8 +38,11 @@ angular.module('partyBidApp')
                 changeactivitystatus.changeactivitystart();
             };
             if (result=="结束") {
-                $scope.start_done_btn="开始";
-                changeactivitystatus.changeactivityend();
+                var result1 = confirm("确认结束本次报名吗？");
+                if(result1 == true){
+                    $scope.start_done_btn="开始";
+                    changeactivitystatus.changeactivityend();
+                }
             };
             
         }
