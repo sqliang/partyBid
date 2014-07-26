@@ -31,3 +31,13 @@ CreateNewActivity.edit_during_activity=function (argument) {
     localStorage['during_activity']=JSON.stringify(argument);
     localStorage['current_activity']=JSON.stringify(argument);
 }
+CreateNewActivity.activity_repeat =function(argument){
+
+    var result1 = JSON.parse(localStorage['activitykey']);
+    for (var i=0;i<result1.length;i++){
+        if (result1[i].name == argument){
+            return 0;
+        }
+    }
+    return 1;
+}

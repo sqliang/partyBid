@@ -18,17 +18,14 @@ angular.module('partyBidApp')
         }
 
         $scope.button_of_CreateActivity=function(){
-            var flag=0;
+            
             var result=$scope.activity_name;
-            var result1 = JSON.parse(localStorage['activitykey']);
-            for (var i=0;i<result1.length;i++){
-                if (result1[i].name == result){
-                    $scope.new_activity_name="活动名称重复！";
-                    flag=1;
-                    break;
-                }
+            var flag=CreateNewActivity.activity_repeat(result);
+            if(flag==0){
+                $scope.new_activity_name="活动名称重复！";
+
             }
-            if (flag==0){
+            if(flag==1){
                 CreateNewActivity.create(result);
                 $location.path('/sign_up');
             }

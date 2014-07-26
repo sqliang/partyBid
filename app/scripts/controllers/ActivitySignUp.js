@@ -19,7 +19,7 @@ angular.module('partyBidApp')
             $scope.user_num='('+result.length+'人'+')';
             $scope.users_data=result;
         }
-         $scope.start_done_btn=changeactivitystatus.changebuttonstatus();
+        $scope.start_done_btn=changeactivitystatus.changebuttonstatus();
         $scope.button_enable= changeactivitystatus.buttonable($scope.start_done_btn);
 
 
