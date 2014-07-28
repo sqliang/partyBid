@@ -1,8 +1,8 @@
-function changeactivitystatus (argument) {
+function activitystatus (argument) {
 
 
 }
-changeactivitystatus.changeactivitystart=function(){
+activitystatus.changeactivitystart=function(){
 
 	var allactivity= JSON.parse(localStorage['activitykey']);
     var during_activity= JSON.parse(localStorage['during_activity']);
@@ -12,7 +12,7 @@ changeactivitystatus.changeactivitystart=function(){
         if(allactivity[i].name==during_activity_name){
         	allactivity[i].status="start";
         	during_activity.status="start";
-        	changeactivitystatus.savetolocalstorage(during_activity,allactivity);
+        	activitystatus.savetolocalstorage(during_activity,allactivity);
         }
 
     }
@@ -21,7 +21,7 @@ changeactivitystatus.changeactivitystart=function(){
 
 }
 
-changeactivitystatus.changeactivityend=function(){
+activitystatus.changeactivityend=function(){
 
 	var allactivity= JSON.parse(localStorage['activitykey']);
     var during_activity= JSON.parse(localStorage['during_activity']);
@@ -31,7 +31,7 @@ changeactivitystatus.changeactivityend=function(){
         if(allactivity[i].name==during_activity_name){
             allactivity[i].status="end";
             during_activity.status="end";
-            changeactivitystatus.savetolocalstorage(during_activity,allactivity);
+            activitystatus.savetolocalstorage(during_activity,allactivity);
 
         }
 
@@ -41,7 +41,7 @@ changeactivitystatus.changeactivityend=function(){
 
 }
 
-changeactivitystatus.changebuttonstatus =function (argument) {
+activitystatus.changebuttonstatus =function (argument) {
 	var allactivity= JSON.parse(localStorage['activitykey']);
     var during_activity= JSON.parse(localStorage['during_activity']);
     var during_activity_name = during_activity.name;
@@ -54,14 +54,14 @@ changeactivitystatus.changebuttonstatus =function (argument) {
 	
 }
 
-changeactivitystatus.savetolocalstorage=function(during_activity,allactivity){
+activitystatus.savetolocalstorage=function(during_activity,allactivity){
 	localStorage['during_activity']=JSON.stringify(during_activity);
 	localStorage['activitykey']=JSON.stringify(allactivity);
 
 }
-changeactivitystatus.buttonable=function(argument) {
+activitystatus.buttonable=function(argument) {
 	var result = JSON.parse(localStorage['current_activity']).status;
-	if ( result=="start" && argument=="开始" || result=="end" || argument=="结束" ){
+	if ( result=="start" && argument=="开始" ){
 		return true;
 	}
 	else {

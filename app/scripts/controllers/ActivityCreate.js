@@ -10,29 +10,22 @@
 angular.module('partyBidApp')
     .controller('CreateControl', function ($scope,$location) {
 
-        if (JSON.parse(localStorage['activitykey']).length==0){
-            $scope.ifnotback=false;
-        }
-        else {
-            $scope.ifnotback=true;
-        }
 
-        $scope.button_of_CreateActivity=function(){
+        $scope.back_to_activity_SignUp_page=function(){
             
-            var result=$scope.activity_name;
-            var flag=CreateNewActivity.activity_repeat(result);
-            if(flag==0){
+            var result =$scope.activity_name;
+            if(Activity.activity_repeat(result)){
                 $scope.new_activity_name="活动名称重复！";
 
             }
-            if(flag==1){
-                CreateNewActivity.create(result);
+            else{
+                Activity.create(result);
                 $location.path('/sign_up');
             }
 
         }
 
-        $scope.back_to_activity_item=function(){
+        $scope.back_to_activity_item_page=function(){
             $location.path('/item');
 
         }

@@ -20,10 +20,10 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
 
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
+        .when('/', {
+            templateUrl: 'views/ActivityItem.html',
+            controller: 'ItemControl'
+        })
 
         .when('/create', {
             templateUrl: 'views/ActivityCreate.html',

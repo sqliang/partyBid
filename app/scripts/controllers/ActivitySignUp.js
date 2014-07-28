@@ -10,7 +10,7 @@
 angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
 
-        var result=ShowUsersList();
+        var result=User.show();
         if(result.length==0){
             $scope.user_num='';
             $scope.users_data=result;
@@ -19,12 +19,11 @@ angular.module('partyBidApp')
             $scope.user_num='('+result.length+'人'+')';
             $scope.users_data=result;
         }
-        $scope.start_done_btn=changeactivitystatus.changebuttonstatus();
-        $scope.button_enable= changeactivitystatus.buttonable($scope.start_done_btn);
+        
+        $scope.start_done_btn=activitystatus.changebuttonstatus();
+        $scope.button_enable= activitystatus.buttonable($scope.start_done_btn);
 
-
-        //返回按钮函数实现
-        $scope.back_to_activity_item=function(){
+        $scope.back_to_activity_item_page=function(){
            $location.path('/item');
 
         }
@@ -35,16 +34,16 @@ angular.module('partyBidApp')
 
             if (result=="开始") {
                 $scope.start_done_btn="结束";
-                changeactivitystatus.changeactivitystart();
+                activitystatus.changeactivitystart();
             };
             if (result=="结束") {
                 var result1 = confirm("确认结束本次报名吗？");
                 if(result1 == true){
-                    // $scope.start_done_btn="开始";
+                     $scope.start_done_btn="开始";
 
-                    $scope.button_enable=changeactivitystatus.buttonable(result);
-                    changeactivitystatus.changeactivityend();
-                    $location.path('/bidlist');
+                    $scope.button_enable=activitystatus.buttonable(result);
+                    activitystatus.changeactivityend();
+                    // $location.path('/bidlist');
                 }
             };
             
