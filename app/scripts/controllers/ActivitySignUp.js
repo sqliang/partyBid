@@ -12,7 +12,7 @@ angular.module('partyBidApp')
 
         var result=User.show();
         if(result.length==0){
-            $scope.user_num='';
+            $scope.user_num='('+0+'人'+')';
             $scope.users_data=result;
         }
         else{
@@ -40,7 +40,6 @@ angular.module('partyBidApp')
                 var result1 = confirm("确认结束本次报名吗？");
                 if(result1 == true){
                      $scope.start_done_btn="开始";
-
                     $scope.button_enable=activitystatus.buttonable(result);
                     activitystatus.changeactivityend();
                     // $location.path('/bidlist');
