@@ -17,6 +17,7 @@ angular.module('partyBidApp')
             $location.path('/item');
         }
         $scope.activity_names=Activity.show();
+        $scope.create_button_enable=Activity.create__enable_item_page();
         
 
         $scope.back_to_create_activity=function(){

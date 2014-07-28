@@ -76,3 +76,13 @@ Activity.judgestatus = function (buildarr) {
     User.send_message(result,buildarr);
 
 }
+
+Activity.create__enable_item_page=function(){
+    var result = JSON.parse(localStorage['during_activity_or_not']);
+    if(result=='1'){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
