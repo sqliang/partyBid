@@ -39,11 +39,17 @@ angular
             controller: 'SignUpControl'
         })
 
+        .when('/bidlist', {
+            templateUrl:'views/BidList.html',
+            controller:'BidListControl'
 
-//        .when('/about', {
-//        templateUrl: 'views/about.html',
-//        controller: 'AboutCtrl'
-//      })
+        })
+
+        .when('/bidsignup', {
+            templateUrl:'views/BIdSignUp.html',
+            controller:'BidSignUpControl'
+
+        })
       .otherwise({
         redirectTo: '/'
       });
