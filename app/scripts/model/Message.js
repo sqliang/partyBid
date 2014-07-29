@@ -20,7 +20,6 @@ Message.judgemessage=function(json_message){
 	    var price = 0;
 	    var buildarr={name:name,phone:telphone,price:price};
 	    Activity.judgestatus(buildarr);
-
 	}
 
 

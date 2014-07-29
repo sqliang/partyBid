@@ -44,10 +44,3 @@ User.show =function (){
     return users;   
 }
 
-User.judgestatus = function (buildarr) {
-
-    var result = JSON.parse(localStorage['current_activity']);
-    var result=result.status;
-    User.send_message(result,buildarr);
-
-}
