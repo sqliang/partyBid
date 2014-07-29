@@ -10,10 +10,13 @@
 angular.module('partyBidApp')
   .controller('BidListControl', function ($scope,$location) {
 
-  		$scope.button_enable=BidStatus.ButtonEnable();
+  		$scope.button_enable=BidInfo.ButtonEnable();
 
-        $scope.start_bid_button=function(){
-            BidStatus.CreateNewBid();
+        $scope.start_bid=function(){
+            BidInfo.CreateNewBid();
+        }
+        $scope.back_to_activity_item_page=function (){
+            $location.path('/item');
         }
 
   });

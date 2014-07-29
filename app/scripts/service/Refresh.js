@@ -1,5 +1,5 @@
 function Page_Refresh () {
-	var refresh_page = document.getElementById("wrapper");  
+	var refresh_page = document.getElementById("refresh_user_num");
     if (refresh_page) {  
         var scope = angular.element(refresh_page).scope();  
         scope.$apply(function () {  

@@ -42,7 +42,7 @@ angular.module('partyBidApp')
                      $scope.start_done_btn="开始";
                     $scope.button_enable=activitystatus.buttonable(result);
                     activitystatus.changeactivityend();
-                    // $location.path('/bidlist');
+                    //$location.path('/bidlist');
                 }
             };
             
