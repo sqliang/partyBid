@@ -14,7 +14,7 @@ var native_accessor = {
     },
 //收到短信之后的处理函数
     process_received_message: function (json_message) {
-        Message.judgemessage(json_message);
+        Message.isRightmessage(json_message);
     }
 };
 

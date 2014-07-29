@@ -27,7 +27,6 @@ angular.module('partyBidApp')
            $location.path('/item');
 
         }
-        //开始结束按钮功能
         $scope.start_activity_btn=function (){
 
             var result=$scope.start_done_btn;

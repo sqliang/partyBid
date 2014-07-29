@@ -4,7 +4,6 @@ function Activity (argument) {
 
 Activity.create=function(new_activity_name){
 
-//add new activity to activity list
     var NewActivcityName = new_activity_name;
     var new_activity_object={};
     new_activity_object.name=NewActivcityName;
@@ -78,6 +77,7 @@ Activity.judgestatus = function (buildarr) {
 }
 
 Activity.create__enable_item_page=function(){
+    //isActivity going
     var result = JSON.parse(localStorage['during_activity_or_not']);
     if(result=='1'){
         return true;

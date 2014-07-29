@@ -6,15 +6,12 @@ User.send_message = function (status,buildarr) {
 
     if(status=='start') {
         var test_phone = buildarr.phone;
-        var test_repeat = Message.judgeRepeat(test_phone);
-        if (test_repeat==true) {
-            //hava a same phone in activity
+        var is_repeat = Message.isRepeat(test_phone);
+        if (is_repeat==true) {
             Message.back_message('repeat',buildarr.phone);
 
         }
         else {
-            //no same phonenum
-            //**************************************************
              var result1 = JSON.parse(localStorage['current_activity']);
              var result1=result1.name;
              var result2 = JSON.parse(localStorage[result1]);

@@ -3,14 +3,9 @@ function Message (argument) {
 	// body...
 }
 
-Message.judgemessage=function(json_message){
-	//judge message format
-	//http://www.w3school.com.cn/jsref/jsref_replace.asp  replace
-	//remove space
+Message.isRightmessage=function(json_message){
 	var result_name_origin=json_message.messages[0].message.replace(/\s/g,'');
 	var result_name=result_name_origin.toLowerCase();
-
-	var result_phone_origin = json_message.messages[0].phone;
 	//start with bm
 	if(result_name.substring(0,2)=="bm"){
 
@@ -21,11 +16,13 @@ Message.judgemessage=function(json_message){
 	    var buildarr={name:name,phone:telphone,price:price};
 	    Activity.judgestatus(buildarr);
 	}
+    else {
+        Message.back_message('wrong',json_message.messages[0].phone);
+    }
 
 
 }
-//test same phonenum
-Message.judgeRepeat=function(phone){
+Message.isRepeat=function(phone){
 
 	var flag=0;
 	var current_activity = JSON.parse(localStorage['current_activity']);
@@ -55,6 +52,9 @@ Message.back_message=function (result,phone){
         else if (result=='repeat'){
             native_accessor.send_sms(phone,'你已报名成功！请勿重复报名!');
 
+        }
+        else if (result=='wrong'){
+            native_accessor.send_sms(phone,'您发送的信息有误！');
         }
         else {
             native_accessor.send_sms(phone,'Sorry,活动报名已结束');
