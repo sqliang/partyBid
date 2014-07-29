@@ -86,3 +86,13 @@ Activity.create__enable_item_page=function(){
         return false;
     }
 }
+Activity.is_show_back_item_button =function (){
+    var result = Activity.get_all_activity();
+    if(result.length==0){
+        return false;
+    }
+    else {
+        return true;
+    }
+
+}

@@ -59,7 +59,7 @@ activitystatus.savetolocalstorage=function(during_activity,allactivity){
 	localStorage['activitykey']=JSON.stringify(allactivity);
 
 }
-activitystatus.buttonable=function(argument) {
+activitystatus.isButtonAble=function(argument) {
 	var result = JSON.parse(localStorage['current_activity']).status;
 	if ( result=="start" && argument=="开始" ){
 		return true;

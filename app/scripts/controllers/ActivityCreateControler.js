@@ -8,9 +8,9 @@
  * Controller of the partyBidApp
  */
 angular.module('partyBidApp')
-    .controller('CreateControl', function ($scope,$location) {
+    .controller('CreateControl', function ($scope,$location,$routeParams) {
 
-
+        $scope.is_show_back_button = Activity.is_show_back_item_button();
         $scope.back_to_activity_SignUp_page=function(){
             
             var result =$scope.activity_name;

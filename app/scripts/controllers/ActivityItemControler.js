@@ -21,6 +21,7 @@ angular.module('partyBidApp')
         
 
         $scope.back_to_create_activity=function(){
+            var temp="hehe";
             $location.path('/create');
         }
         $scope.choose_activity =function(activity){

@@ -21,7 +21,7 @@ angular.module('partyBidApp')
         }
         
         $scope.start_done_btn=activitystatus.changebuttonstatus();
-        $scope.button_enable= activitystatus.buttonable($scope.start_done_btn);
+        $scope.button_enable= activitystatus.isButtonAble($scope.start_done_btn);
 
         $scope.back_to_activity_item_page=function(){
            $location.path('/item');
@@ -39,7 +39,7 @@ angular.module('partyBidApp')
                 var result1 = confirm("确认结束本次报名吗？");
                 if(result1 == true){
                      $scope.start_done_btn="开始";
-                    $scope.button_enable=activitystatus.buttonable(result);
+                    $scope.button_enable=activitystatus.isButtonAble(result);
                     activitystatus.changeactivityend();
                     //$location.path('/bidlist');
                 }
