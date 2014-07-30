@@ -45,7 +45,7 @@ angular
 
         })
 
-        .when('/bidsignup', {
+        .when('/bidsignup/:message', {
             templateUrl:'views/BIdSignUp.html',
             controller:'BidSignUpControl'
 

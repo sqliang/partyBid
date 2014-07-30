@@ -6,19 +6,23 @@ function Message (argument) {
 Message.isRightmessage=function(json_message){
 	var result_name_origin=json_message.messages[0].message.replace(/\s/g,'');
 	var result_name=result_name_origin.toLowerCase();
+	var name = result_name.slice(2);
+    var telphone = json_message.messages[0].phone;
 	//start with bm
 	if(result_name.substring(0,2)=="bm"){
 
-		//get sign up user name
-		var name = result_name.slice(2);
-	    var telphone = json_message.messages[0].phone;
 	    var price = 0;
 	    var buildarr={name:name,phone:telphone,price:price};
 	    Activity.judgestatus(buildarr);
 	}
-    else {
-        Message.back_message('wrong',json_message.messages[0].phone);
-    }
+	if(result_name.substring(0,2)=="jj"){
+		var messages = {phone:telphone,price:name};
+		BidInfo.add_user_to_current_bid(messages);
+
+	}
+    // else {
+    //     Message.back_message('wrong',json_message.messages[0].phone);
+    // }
 
 
 }

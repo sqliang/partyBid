@@ -1,5 +1,5 @@
 <header class="header">
-	竞价
+	竞价列表
     <button ng-show="true" class="btn btn-primary header-left" ng-click='back_to_activity_item_page()'>返回</button>
     <button ng-show="true" ng-disabled="button_enable" class="btn btn-primary header-right" ng-click='
     start_bid()'>开始</button>
@@ -8,10 +8,10 @@
 
 <div id="wrapper" class="wrapper">
     <ul class="list-style-2">
-        <li class="clearfix btn-default" ng-repeat="user in users_data">
+        <li class="clearfix btn-default" ng-repeat="bid in allbid" ng-click="choose_bid(bid)">
         <!--<li class="clearfix btn-default">-->
-            <h3>{{user.name}}</h3>
-            <i>{{user.phone}}</i>
+            <h3 class="{{bid.status}}">{{bid.name}}</h3>
+            <i>{{bid.phone}}</i>
         </li>
     </ul>
 </div>
