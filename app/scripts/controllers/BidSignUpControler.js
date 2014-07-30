@@ -11,6 +11,8 @@ angular.module('partyBidApp')
   .controller('BidSignUpControl', function ($scope,$location,$routeParams) {
   	  	var result = $routeParams.message;
 
+  	   $scope.bid_users = BidInfo.show_current_bid_user(result);
+
 
   	$scope.back_to_bid_item_page=function(){
   		$location.path('/bidlist');

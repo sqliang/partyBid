@@ -38,9 +38,9 @@ angular.module('partyBidApp')
             if (result=="结束") {
                 var result1 = confirm("确认结束本次报名吗？");
                 if(result1 == true){
-                     $scope.start_done_btn="开始";
+                     // $scope.start_done_btn="开始";
                     $scope.button_enable=activitystatus.isButtonAble(result);
-                    activitystatus.changeactivityend();
+                    // activitystatus.changeactivityend();
                     $location.path('/bidlist');
                 }
             };

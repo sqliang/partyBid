@@ -21,16 +21,24 @@ BidInfo.add_user_to_current_bid=function(argument){
 	// console.log(argument.price);
 	var name = BidInfo.Get_Current_Bid_name();
 	var result=getItemfromLocalstorage(name);
+	var user_name = BidInfo.get_bid_user_name(argument.phone)
 	var current_bid = getItemfromLocalstorage('current_bid');
-	for(var i=0;i<result.length;i++){
-		if(result[i].name==current_bid){
-			result[i].messages.push({phone:argument.phone,price:argument.price});
-			localStorage[name]=JSON.stringify(result);
-			return ;
+	if(BidInfo.isSingUp(argument.phone)==true){
+		for(var i=0;i<result.length;i++){
+			if(result[i].name==current_bid){
+				result[i].messages.push({name:user_name,phone:argument.phone,price:argument.price});
+				localStorage[name]=JSON.stringify(result);
+				return ;
+			}
+
 		}
+		return ;
+		
+	}
+	else{
+		Message.back_message('nosignup',argument.phone);
 
 	}
-	return ;
 
 }
 
@@ -61,7 +69,15 @@ BidInfo.Get_Current_Activity_all_Bid = function(){
 BidInfo.isRepeat=function(){
 
 }
-BidInfo.isSingUp=function(){
+BidInfo.isSingUp=function(argument){
+	var result = User.get_current_activity_users();
+	for(var i=0;i<result.length;i++){
+		if(result[i].phone == argument){
+			return true;
+		}
+	}
+	return false;
+
 
 }
 
@@ -71,8 +87,37 @@ BidInfo.save_current_bid_to_localstorage=function(argument){
 }
 
 BidInfo.end_current_bid=function(){
-	var result=Activity.get_current_activity();
-	console.log(result);
+	var result=BidInfo.Get_Current_Bid_name();
+	var allbid= getItemfromLocalstorage(result);
+	var current_bid_name = getItemfromLocalstorage('current_bid');
+	for(var i=0;i<allbid.length;i++){
+		if(allbid[i].name==current_bid_name){
+			allbid[i].status="end";
+			localStorage[result]=JSON.stringify(allbid);
+		}
+	}
+	activitystatus.changeactivityend();
 
+}
+
+BidInfo.show_current_bid_user =function(argument){
+	var result = BidInfo.Get_Current_Activity_all_Bid();
+
+	for(var i=0;i<result.length;i++){
+		if(result[i].name==argument){
+			 return result[i].messages;
+		}
+	}
+	return ;
+}
+
+BidInfo.get_bid_user_name =function(argument){
+	var result=User.get_current_activity_users();
+	// console.log(result[1].phone);
+	for(var i=0;i<result.length;i++){
+		if(result[i].phone==argument){
+			return result[i].name;
+		}
+	}
 
 }

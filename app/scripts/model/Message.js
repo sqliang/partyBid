@@ -20,9 +20,9 @@ Message.isRightmessage=function(json_message){
 		BidInfo.add_user_to_current_bid(messages);
 
 	}
-    // else {
-    //     Message.back_message('wrong',json_message.messages[0].phone);
-    // }
+    else {
+        Message.back_message('wrong',json_message.messages[0].phone);
+    }
 
 
 }
@@ -52,6 +52,9 @@ Message.back_message=function (result,phone){
         }
         else if (result=='wrong'){
             native_accessor.send_sms(phone,'您发送的信息有误！');
+        }
+        else if (result=='nosignup'){
+            native_accessor.send_sms(phone,'对不起，您没有报名此次活动！');
         }
         else {
             native_accessor.send_sms(phone,'Sorry,活动报名已结束');

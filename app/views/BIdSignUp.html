@@ -1,13 +1,13 @@
 <header class="header">
 	竞价报名
     <button ng-show="true" class="btn btn-primary header-left" ng-click='back_to_bid_item_page()'>返回</button>
-    <button ng-show="true" ng-disabled="button_enable" class="btn btn-primary header-right" ng-click='start_activity_btn()'>结束</button>
+    <button ng-show="true" class="btn btn-primary header-right" ng-click='end_current_bid()'>结束</button>
 </header>
 
 
 <div id="wrapper" class="wrapper">
     <ul class="list-style-2">
-        <li class="clearfix btn-default" ng-repeat="user in users_data">
+        <li class="clearfix btn-default" ng-repeat="user in bid_users">
         <!--<li class="clearfix btn-default">-->
             <h3>{{user.name}}</h3>
             <i>{{user.phone}}</i>
