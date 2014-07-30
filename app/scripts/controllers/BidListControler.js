@@ -13,7 +13,7 @@ angular.module('partyBidApp')
   		$scope.button_enable=BidInfo.ButtonEnable();
 
         $scope.start_bid=function(){
-            BidInfo.CreateNewBid();
+        	BidInfo.CreateNewBid();
         }
         $scope.back_to_activity_item_page=function (){
             $location.path('/item');

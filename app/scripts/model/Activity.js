@@ -1,5 +1,5 @@
 function Activity (argument) {
-	// body...
+	
 }
 
 Activity.create=function(new_activity_name){
@@ -17,7 +17,7 @@ Activity.create=function(new_activity_name){
 
 Activity.save=function (result_object) {
 
-	var result = JSON.parse(localStorage['activitykey']);
+	var result = Activity.get_all_activity();
 	result.push(result_object);
     localStorage['activitykey']=JSON.stringify(result);
 	
@@ -41,11 +41,9 @@ Activity.activity_repeat =function(argument){
     return false;
 }
 Activity.show=function(){
-    var arr1=JSON.parse(localStorage['activitykey']);
-    arr1 = arr1.reverse();
-    return arr1;
-
+    return Activity.get_all_activity().reverse();;
 }
+
 
 
 Activity.localStorage_length=function(){
@@ -70,7 +68,7 @@ Activity.get_all_activity=function (){
 
 Activity.judgestatus = function (buildarr) {
 
-    var result = JSON.parse(localStorage['current_activity']);
+    var result = Activity.get_current_activity();
     var result=result.status;
     User.send_message(result,buildarr);
 
@@ -95,4 +93,12 @@ Activity.is_show_back_item_button =function (){
         return true;
     }
 
+}
+Activity.get_current_activity= function(){
+    return JSON.parse(localStorage['current_activity']);
+}
+Activity.get_current_activity_users=function(){
+    var result = Activity.get_current_activity;
+    // return JSON.parse(localStorage[result]);
+    console.log(result);
 }

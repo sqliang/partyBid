@@ -41,3 +41,7 @@ User.show =function (){
     return users;   
 }
 
+User.get_current_activity_users=function(){
+    var result = Activity.get_current_activity().name;
+    return JSON.parse(localStorage[result]);
+}
