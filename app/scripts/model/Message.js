@@ -8,19 +8,21 @@ Message.isRightmessage=function(json_message){
 	var result_name=result_name_origin.toLowerCase();
 	var name = result_name.slice(2);
     var telphone = json_message.messages[0].phone;
+    var flag=0;
 	//start with bm
 	if(result_name.substring(0,2)=="bm"){
-
+		flag=1;
 	    var price = 0;
 	    var buildarr={name:name,phone:telphone,price:price};
 	    Activity.judgestatus(buildarr);
 	}
 	if(result_name.substring(0,2)=="jj"){
+		flag=1;
 		var messages = {phone:telphone,price:name};
 		BidInfo.add_user_to_current_bid(messages);
 
 	}
-    else {
+    if (flag==0){
         Message.back_message('wrong',json_message.messages[0].phone);
     }
 
