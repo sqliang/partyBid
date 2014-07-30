@@ -3,6 +3,12 @@ function BidInfo (argument) {
 }
 
 BidInfo.ButtonEnable = function(){
+	var result = BidInfo.Get_Current_Activity_all_Bid();
+	for(var i=0;i<result.length;i++){
+		if(result[i].status=="start"){
+			return true;
+		}
+	}
 	return false;
 }
 
@@ -28,6 +34,8 @@ BidInfo.add_user_to_current_bid=function(argument){
 			if(result[i].name==current_bid){
 				result[i].messages.push({name:user_name,phone:argument.phone,price:argument.price});
 				localStorage[name]=JSON.stringify(result);
+				Message.back_message('bidsuccess',argument.phone);
+				refresh_bid_signup_page();
 				return ;
 			}
 
@@ -63,7 +71,7 @@ BidInfo.Get_Current_Activity_all_Bid = function(){
  	if(!localStorage[result+'_bid']){
 		localStorage[result+'_bid']=JSON.stringify([]);
  	}
- 	return JSON.parse(localStorage[result+'_bid']);
+ 	return JSON.parse(localStorage[result+'_bid']).reverse();
 }
 
 BidInfo.isRepeat=function(){
@@ -119,5 +127,16 @@ BidInfo.get_bid_user_name =function(argument){
 			return result[i].name;
 		}
 	}
+
+}
+
+BidInfo.endbuttonisable=function(argument){
+	var result = BidInfo.Get_Current_Activity_all_Bid();
+	for(var i=0;i<result.length;i++){
+		if(result[i].name==argument && result[i].status=='end'){
+			return true;
+		}
+	}
+	return false
 
 }

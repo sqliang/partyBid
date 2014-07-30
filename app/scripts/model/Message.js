@@ -58,6 +58,10 @@ Message.back_message=function (result,phone){
         else if (result=='nosignup'){
             native_accessor.send_sms(phone,'对不起，您没有报名此次活动！');
         }
+        else if(result=="bidsuccess")
+        {
+        	native_accessor.send_sms(phone,'恭喜！您已出价成功');
+        }
         else {
             native_accessor.send_sms(phone,'Sorry,活动报名已结束');
         }

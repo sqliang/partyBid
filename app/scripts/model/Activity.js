@@ -97,8 +97,3 @@ Activity.is_show_back_item_button =function (){
 Activity.get_current_activity= function(){
     return JSON.parse(localStorage['current_activity']);
 }
-Activity.get_current_activity_users=function(){
-    var result = Activity.get_current_activity;
-    // return JSON.parse(localStorage[result]);
-    console.log(result);
-}

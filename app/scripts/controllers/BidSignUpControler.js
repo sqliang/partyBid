@@ -12,6 +12,8 @@ angular.module('partyBidApp')
   	  	var result = $routeParams.message;
 
   	   $scope.bid_users = BidInfo.show_current_bid_user(result);
+       $scope.buttonisable=BidInfo.endbuttonisable(result);
+
 
 
   	$scope.back_to_bid_item_page=function(){
@@ -19,7 +21,15 @@ angular.module('partyBidApp')
 
   	}
   	$scope.end_current_bid=function(){
-  		BidInfo.end_current_bid();
+      var result = confirm("是否确实要终止此次竞价？");
+      if(result==true){
+  		    BidInfo.end_current_bid();
+          $scope.buttonisable=true;
+
+      }
+      else {
+        ;
+      }
   	}
     
 
