@@ -60,11 +60,24 @@ activitystatus.savetolocalstorage=function(during_activity,allactivity){
 
 }
 activitystatus.isButtonAble=function(argument) {
-	var result = JSON.parse(localStorage['current_activity']).status;
-	if ( result=="start" && argument=="开始" || result=="end"){
-		return true;
+	var result = JSON.parse(localStorage['during_activity']).status;
+    var result1 = JSON.parse(localStorage['during_activity_or_not']);
+	if ( result=="start"){
+		return false;
 	}
-	else {
+    else if (result=="end" && result1=='1') {
+        return true;
+    }
+    else if (result=="unstart") {
+        return false;
+    }
+    else if (result1=='0'){
+        return false;
+    }
+    else if(BidInfo.is_bid_on()){
+        return true;
+    }
+	else{
 		return false;
 	}
 }

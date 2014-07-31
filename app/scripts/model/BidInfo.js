@@ -186,5 +186,14 @@ BidInfo.is_bid_repeat=function(argument){
 
 	}
 	return false;
+}
 
+BidInfo.is_bid_on=function(){
+	var result = getItemfromLocalstorage(BidInfo.Get_Current_Bid_name());
+	for(var i=0;i<result.length;i++){
+		if(result[i].status=="start"){
+			return true;
+		}
+	}
+	return false;
 }

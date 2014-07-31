@@ -19,7 +19,7 @@ function refresh_bid_signup_page(){
         var current_bid = JSON.parse(localStorage['current_bid']);
         var result = BidInfo.show_current_bid_user(current_bid);
         scope.bid_users= result;
-            // scope.user_num=result.length;
+        scope.bid_num=result.length;
         })  
     }  
 

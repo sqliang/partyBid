@@ -10,8 +10,18 @@
 angular.module('partyBidApp')
   .controller('BidSignUpControl', function ($scope,$location,$routeParams) {
   	  	var result = $routeParams.message;
+        var result = BidInfo.show_current_bid_user(result);
+        
 
-  	   $scope.bid_users = BidInfo.show_current_bid_user(result);
+        if(result.length==0){
+            $scope.bid_num='('+0+'人'+')';
+        }
+        else{
+            $scope.bid_num='('+result.length+'人'+')';
+        }
+        $scope.bid_users = result;
+
+  	   
        $scope.buttonisable=BidInfo.endbuttonisable(result);
 
 
