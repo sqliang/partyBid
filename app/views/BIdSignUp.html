@@ -9,7 +9,7 @@
     <ul class="list-style-2">
         <li class="clearfix btn-default" ng-repeat="user in bid_users track by $index">
         <!--<li class="clearfix btn-default">-->
-            <h3>{{user.name}}</h3>
+            <h3>{{1+$index}}&nbsp;&nbsp;&nbsp;{{user.name}}</h3>
             <i>{{user.phone}}</i>
         </li>
     </ul>
