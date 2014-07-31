@@ -41,6 +41,14 @@ activitystatus.changeactivityend=function(){
 
 }
 
+
+activitystatus.savetolocalstorage=function(during_activity,allactivity){
+    localStorage['during_activity']=JSON.stringify(during_activity);
+    localStorage['activitykey']=JSON.stringify(allactivity);
+
+}
+
+
 activitystatus.changebuttonstatus =function (argument) {
 	var allactivity= JSON.parse(localStorage['activitykey']);
     var during_activity= JSON.parse(localStorage['during_activity']);
@@ -54,11 +62,6 @@ activitystatus.changebuttonstatus =function (argument) {
 	
 }
 
-activitystatus.savetolocalstorage=function(during_activity,allactivity){
-	localStorage['during_activity']=JSON.stringify(during_activity);
-	localStorage['activitykey']=JSON.stringify(allactivity);
-
-}
 activitystatus.isButtonAble=function(argument) {
 	var result = JSON.parse(localStorage['during_activity']).status;
     var result1 = JSON.parse(localStorage['during_activity_or_not']);
