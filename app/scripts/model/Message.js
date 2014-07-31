@@ -19,13 +19,13 @@ Message.isRightmessage=function(json_message){
 	if(result_name.substring(0,2)=="jj"){
 		flag=1;
 		var messages = {phone:telphone,price:name};
-		BidInfo.add_user_to_current_bid(messages);
+	    // BidInfo.add_user_to_current_bid(messages);
+        BidInfo.isbidstart(messages);
 
 	}
     if (flag==0){
         Message.back_message('wrong',json_message.messages[0].phone);
     }
-
 
 }
 Message.isRepeat=function(phone){
@@ -61,6 +61,14 @@ Message.back_message=function (result,phone){
         else if(result=="bidsuccess")
         {
         	native_accessor.send_sms(phone,'恭喜！您已出价成功');
+        }
+        else if(result=="bidunstart")
+        {
+            native_accessor.send_sms(phone,'对不起，活动尚未开始！');
+        }
+        else if(result=="bidend")
+        {
+            native_accessor.send_sms(phone,'对不起，活动已结束！');
         }
         else {
             native_accessor.send_sms(phone,'Sorry,活动报名已结束');

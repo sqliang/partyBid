@@ -24,11 +24,11 @@ BidInfo.CreateNewBid =function (){
 }
 
 BidInfo.add_user_to_current_bid=function(argument){
-	// console.log(argument.price);
+
 	var name = BidInfo.Get_Current_Bid_name();
 	var result=getItemfromLocalstorage(name);
 	var user_name = BidInfo.get_bid_user_name(argument.phone)
-	var current_bid = getItemfromLocalstorage('current_bid');
+	var current_bid = getItemfromLocalstorage('current_bid');	
 	if(BidInfo.isSingUp(argument.phone)==true){
 		for(var i=0;i<result.length;i++){
 			if(result[i].name==current_bid){
@@ -36,20 +36,18 @@ BidInfo.add_user_to_current_bid=function(argument){
 				localStorage[name]=JSON.stringify(result);
 				Message.back_message('bidsuccess',argument.phone);
 				refresh_bid_signup_page();
-				return ;
 			}
 
 		}
-		return ;
 		
 	}
 	else{
 		Message.back_message('nosignup',argument.phone);
 
 	}
-
+	
+	
 }
-
 BidInfo.SaveNewBid =function (argument) {
 	var result =BidInfo.Get_Current_Bid_name();
 	localStorage[result]=JSON.stringify(argument);
@@ -85,8 +83,6 @@ BidInfo.isSingUp=function(argument){
 		}
 	}
 	return false;
-
-
 }
 
 BidInfo.save_current_bid_to_localstorage=function(argument){
@@ -139,4 +135,33 @@ BidInfo.endbuttonisable=function(argument){
 	}
 	return false
 
+}
+BidInfo.isbidstart=function(argument){
+	var current_bid_length= BidInfo.Get_Current_Bid_length();
+	var result=BidInfo.get_current_bid_status();
+	if(result=="bidunstart" || current_bid_length==0){
+		Message.back_message('bidunstart',argument.phone)
+	}
+	else if(result=="end"){
+		Message.back_message('bidend',argument.phone);
+	}
+	else {
+		BidInfo.add_user_to_current_bid(argument);
+	}
+	
+}
+
+BidInfo.get_current_bid_status=function(){
+	var result = getItemfromLocalstorage('current_bid');
+	var result1 = getItemfromLocalstorage(BidInfo.Get_Current_Bid_name());
+	for(var i=0;i<result1.length;i++){
+		if (result1[i].name==result) {
+			return result1[i].status;
+		};
+	}
+	return 'bidunstart';
+}
+
+BidInfo.is_bid_repeat=function(){
+	
 }
