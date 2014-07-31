@@ -13,7 +13,7 @@ BidInfo.ButtonEnable = function(){
 }
 
 BidInfo.CreateNewBid =function (){
-	var result=BidInfo.Get_Current_Activity_all_Bid();
+	var result=BidInfo.Get_Current_Activity_all_Bid().reverse();
 	var result_length=BidInfo.Get_Current_Bid_length()+1;
 	var newobject = {name:'竞价'+result_length,status:'start',messages:[]};
 	result.push(newobject);
@@ -117,7 +117,6 @@ BidInfo.show_current_bid_user =function(argument){
 
 BidInfo.get_bid_user_name =function(argument){
 	var result=User.get_current_activity_users();
-	// console.log(result[1].phone);
 	for(var i=0;i<result.length;i++){
 		if(result[i].phone==argument){
 			return result[i].name;
