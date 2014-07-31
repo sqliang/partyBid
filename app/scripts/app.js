@@ -39,7 +39,7 @@ angular
             controller: 'SignUpControl'
         })
 
-        .when('/bidlist', {
+        .when('/bidlist/:message', {
             templateUrl:'views/BidList.html',
             controller:'BidListControl'
 

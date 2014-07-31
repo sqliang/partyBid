@@ -71,6 +71,13 @@ BidInfo.Get_Current_Activity_all_Bid = function(){
  	}
  	return JSON.parse(localStorage[result+'_bid']).reverse();
 }
+BidInfo.Get_during_Activity_all_Bid = function(){
+    var result = Activity.get_during_activity.name;
+    if(!localStorage[result+'_bid']){
+        localStorage[result+'_bid']=JSON.stringify([]);
+    }
+    return JSON.parse(localStorage[result+'_bid']).reverse();
+}
 
 BidInfo.isRepeat=function(){
 
@@ -196,4 +203,21 @@ BidInfo.is_bid_on=function(){
 		}
 	}
 	return false;
+}
+
+BidInfo.get_activitiy_bid=function(argument){
+    var result = argument+'_bid';
+    return getItemfromLocalstorage(result);
+
+}
+
+BidInfo.show_during_bid_user =function(argument){
+    var result = BidInfo.Get_during_Activity_all_Bid();
+
+    for(var i=0;i<result.length;i++){
+        if(result[i].name==argument){
+            return result[i].messages;
+        }
+    }
+    return ;
 }

@@ -97,3 +97,7 @@ Activity.is_show_back_item_button =function (){
 Activity.get_current_activity= function(){
     return JSON.parse(localStorage['current_activity']);
 }
+
+Activity.get_during_activity=function(){
+    return JSON.parse(localStorage['during_activity']);
+}

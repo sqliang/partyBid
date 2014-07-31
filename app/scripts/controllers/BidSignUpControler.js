@@ -10,7 +10,15 @@
 angular.module('partyBidApp')
   .controller('BidSignUpControl', function ($scope,$location,$routeParams) {
   	  	var result = $routeParams.message;
-        var result = BidInfo.show_current_bid_user(result);
+//        console.log(result);
+        if(result.substring(0,2)=="竞价"){
+            var result = BidInfo.show_current_bid_user(result);
+        }
+        else {
+            var result = BidInfo.show_during_bid_user(result);
+
+        }
+
         
 
         if(result.length==0){
@@ -27,7 +35,8 @@ angular.module('partyBidApp')
 
 
   	$scope.back_to_bid_item_page=function(){
-  		$location.path('/bidlist');
+        var result = getItemfromLocalstorage('during_activity').name;
+  		$location.path('/bidlist/'+result);
 
   	}
   	$scope.end_current_bid=function(){

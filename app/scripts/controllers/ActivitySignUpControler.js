@@ -19,7 +19,7 @@ angular.module('partyBidApp')
             $scope.user_num='('+result.length+'人'+')';
             $scope.users_data=result;
         }
-        
+        $scope.during_activity_name = Activity.get_during_activity().name;
         $scope.start_done_btn=activitystatus.changebuttonstatus();
         $scope.button_enable= activitystatus.isButtonAble($scope.start_done_btn);
 
@@ -41,7 +41,8 @@ angular.module('partyBidApp')
                      // $scope.start_done_btn="开始";
                     // $scope.button_enable=activitystatus.isButtonAble(result);
                     activitystatus.changeactivityend();
-                    $location.path('/bidlist');
+                    var result = getItemfromLocalstorage('during_activity').name;
+                    $location.path('/bidlist/'+result);
                 }
             };
             
