@@ -138,15 +138,25 @@ BidInfo.endbuttonisable=function(argument){
 }
 BidInfo.isbidstart=function(argument){
 	var current_bid_length= BidInfo.Get_Current_Bid_length();
-	var result=BidInfo.get_current_bid_status();
-	if(result=="bidunstart" || current_bid_length==0){
-		Message.back_message('bidunstart',argument.phone)
+	if(current_bid_length==0){
+		Message.back_message('bidunstart',argument.phone);
+		return;
+	}
+    var result=BidInfo.get_current_bid_status();
+	if(result=="bidunstart"){
+		Message.back_message('bidunstart',argument.phone);		
 	}
 	else if(result=="end"){
 		Message.back_message('bidend',argument.phone);
 	}
 	else {
-		BidInfo.add_user_to_current_bid(argument);
+		if(BidInfo.is_bid_repeat(argument)){
+			Message.back_message('bidrepeat',argument.phone);
+		}
+		else {
+		    BidInfo.add_user_to_current_bid(argument);
+		}	
+		
 	}
 	
 }
@@ -162,6 +172,20 @@ BidInfo.get_current_bid_status=function(){
 	return 'bidunstart';
 }
 
-BidInfo.is_bid_repeat=function(){
-	
+BidInfo.is_bid_repeat=function(argument){
+	var result = getItemfromLocalstorage('current_bid');
+	var result1 = getItemfromLocalstorage(BidInfo.Get_Current_Bid_name());
+	for(var i=0;i<result1.length;i++){
+		if(result1[i].name==result){
+			var result=result1[i].messages;
+		}
+	}
+	for (var i=0;i<result.length;i++){
+		if(result[i].phone == argument.phone){
+			return true;
+		}
+
+	}
+	return false;
+
 }

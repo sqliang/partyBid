@@ -70,6 +70,9 @@ Message.back_message=function (result,phone){
         {
             native_accessor.send_sms(phone,'对不起，活动已结束！');
         }
+        else if (result=="bidrepeat"){
+            native_accessor.send_sms(phone,'您已成功出价，请勿重复出价');
+        }
         else {
             native_accessor.send_sms(phone,'Sorry,活动报名已结束');
         }
