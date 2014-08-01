@@ -101,3 +101,32 @@ Activity.get_current_activity= function(){
 Activity.get_during_activity=function(){
     return JSON.parse(localStorage['during_activity']);
 }
+
+Activity.get_during_activity_status=function(){
+    return JSON.parse(localStorage['during_activity']).status;
+}
+
+Activity.signup_page_button_status = function(){
+    // var during_activity_status = Activity.get_during_activity_status();
+    var result = Activity.get_during_activity().status;
+    var is_activity_on = JSON.parse(localStorage['during_activity_or_not']);
+    if(result=="unstart" && is_activity_on=="0"){
+         return "unstart";
+
+    }
+    if(result=="unstart" && is_activity_on=="1"){
+        return ;
+    }
+    if(result=="start"){
+        return "start";
+    }
+    if(result=="end"&& is_activity_on=="0"){
+        return "unstart";
+    }
+    if (result=="end" && is_activity_on=="1") {
+        return ;
+    }
+    if(result=="onbid"){
+        return "onbid";
+    }
+}

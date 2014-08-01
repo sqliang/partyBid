@@ -16,7 +16,7 @@ angular.module('partyBidApp')
         $scope.start_bid=function(){
         	var result= BidInfo.CreateNewBid();
         	BidInfo.save_current_bid_to_localstorage(result);
-          activitystatus.changeactivitystart();
+          activitystatus.changeactivityonbid();
         	$location.path('/bidsignup/'+result);
         }
         $scope.choose_bid=function(click_bid){

@@ -20,31 +20,31 @@ angular.module('partyBidApp')
             $scope.users_data=result;
         }
         $scope.during_activity_name = Activity.get_during_activity().name;
-        $scope.start_done_btn=activitystatus.changebuttonstatus();
-        $scope.button_enable= activitystatus.isButtonAble($scope.start_done_btn);
+        $scope.signup_button_status = Activity.signup_page_button_status();
 
         $scope.back_to_activity_item_page=function(){
            $location.path('/item');
 
         }
         $scope.start_activity_btn=function (){
-
-            var result=$scope.start_done_btn;
-
-            if (result=="开始") {
-                $scope.start_done_btn="结束";
+            var result = Activity.signup_page_button_status();
+            if(result=="unstart"){
                 activitystatus.changeactivitystart();
-            };
-            if (result=="结束") {
-                var result1 = confirm("确认结束本次报名吗？");
-                if(result1 == true){
-                     // $scope.start_done_btn="开始";
-                    // $scope.button_enable=activitystatus.isButtonAble(result);
+            }
+            if(result=="start"){
+                result = confirm("确认你结束本次报名吗？");
+                if(result==true){
                     activitystatus.changeactivityend();
-                    var result = getItemfromLocalstorage('during_activity').name;
+                    result = getItemfromLocalstorage('during_activity').name;
                     $location.path('/bidlist/'+result);
                 }
-            };
+                else {
+                    ;
+                }
+
+            }
+            result = Activity.signup_page_button_status();
+            $scope.signup_button_status = result;
             
         }
     });

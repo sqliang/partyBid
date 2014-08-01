@@ -19,7 +19,6 @@ Message.isRightmessage=function(json_message){
 	if(result_name.substring(0,2)=="jj"){
 		flag=1;
 		var messages = {phone:telphone,price:name};
-	    // BidInfo.add_user_to_current_bid(messages);
         BidInfo.isbidstart(messages);
 
 	}
