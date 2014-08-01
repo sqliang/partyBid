@@ -133,13 +133,13 @@ BidInfo.get_bid_user_name =function(argument){
 }
 
 BidInfo.endbuttonisable=function(argument){
-	var result = BidInfo.Get_Current_Activity_all_Bid();
+	var during_activity_name=getItemfromLocalstorage('during_activity').name+'_bid';
+	var result = getItemfromLocalstorage(during_activity_name);
 	for(var i=0;i<result.length;i++){
-		if(result[i].name==argument && result[i].status=='end'){
-			return true;
+		if(result[i].name==argument){
+			return result[i].status;
 		}
 	}
-	return false
 
 }
 BidInfo.isbidstart=function(argument){
