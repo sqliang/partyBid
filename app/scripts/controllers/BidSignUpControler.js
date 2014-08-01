@@ -11,13 +11,7 @@ angular.module('partyBidApp')
   .controller('BidSignUpControl', function ($scope,$location,$routeParams) {
   	  	var result = $routeParams.message;
         $scope.bid_end_button_enable = BidInfo.endbuttonisable(result);
-        if(result.substring(0,2)=="竞价"){
-            var result = BidInfo.show_current_bid_user(result);
-        }
-        else {
-            var result = BidInfo.show_during_bid_user(result);
-
-        }       
+        result = BidInfo.show_during_bid_user(result);
 
         if(result.length==0){
             $scope.bid_num='('+0+'人'+')';

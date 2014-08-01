@@ -3,7 +3,11 @@ function BidInfo (argument) {
 }
 
 BidInfo.ButtonEnable = function(){
-	var result = BidInfo.Get_Current_Activity_all_Bid();
+	var result = BidInfo.Get_during_Activity_all_Bid();
+	var during_bid_length =getItemfromLocalstorage(User.get_during_activity_users().name).length;
+	if(during_bid_length==0){
+		return true;
+	}
 	for(var i=0;i<result.length;i++){
 		if(result[i].status=="start"){
 			return true;
@@ -64,6 +68,12 @@ BidInfo.Get_Current_Bid_length=function(){
 	return BidInfo.Get_Current_Activity_all_Bid().length;
 
 }
+
+BidInfo.Get_during_Bid_length=function(){
+	return BidInfo.Get_during_Activity_all_Bid().length;
+
+}
+
 BidInfo.Get_Current_Activity_all_Bid = function(){
 	var result = Activity.get_current_activity().name;
  	if(!localStorage[result+'_bid']){
@@ -212,12 +222,12 @@ BidInfo.get_activitiy_bid=function(argument){
 }
 
 BidInfo.show_during_bid_user =function(argument){
-    var result = BidInfo.Get_during_Activity_all_Bid();
-
-    for(var i=0;i<result.length;i++){
-        if(result[i].name==argument){
-            return result[i].messages;
-        }
-    }
-    return ;
+	var result = getItemfromLocalstorage('during_activity').name+'_bid';
+	result =getItemfromLocalstorage(result);
+	for(var i=0;i<result.length;i++){
+		if(result[i].name==argument){
+			return result[i].messages;
+		}
+	}
+	return ;
 }

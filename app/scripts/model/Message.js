@@ -63,11 +63,11 @@ Message.back_message=function (result,phone){
         }
         else if(result=="bidunstart")
         {
-            native_accessor.send_sms(phone,'对不起，活动尚未开始！');
+            native_accessor.send_sms(phone,'对不起，竞价尚未开始！');
         }
         else if(result=="bidend")
         {
-            native_accessor.send_sms(phone,'对不起，活动已结束！');
+            native_accessor.send_sms(phone,'对不起，竞价已结束！');
         }
         else if (result=="bidrepeat"){
             native_accessor.send_sms(phone,'您已成功出价，请勿重复出价');

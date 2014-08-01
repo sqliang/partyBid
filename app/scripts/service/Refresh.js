@@ -6,7 +6,7 @@ function Page_Refresh () {
         	var during_name= JSON.parse(localStorage['during_activity']).name;
         	var result=JSON.parse(localStorage[during_name]);
             scope.users_data= result;
-            scope.user_num=result.length;
+            scope.user_num='('+result.length+'人'+')';
         })  
     }  
 }
