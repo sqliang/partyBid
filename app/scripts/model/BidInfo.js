@@ -2,14 +2,17 @@ function BidInfo (argument) {
 	
 }
 
-BidInfo.ButtonEnable = function(){
+BidInfo.ButtonEnable = function(argument){
 	var result = BidInfo.Get_during_Activity_all_Bid();
-	var during_bid_length =getItemfromLocalstorage(User.get_during_activity_users().name).length;
+    var during_bid_length =getItemfromLocalstorage(User.get_during_activity_users().name).length;
+    if(JSON.parse(localStorage['during_activity']).status=="start"){
+    	return true;
+    }
 	if(during_bid_length==0){
 		return true;
 	}
 	for(var i=0;i<result.length;i++){
-		if(result[i].status=="start"){
+		if(result[i].status=="start" ){
 			return true;
 		}
 	}
@@ -82,7 +85,7 @@ BidInfo.Get_Current_Activity_all_Bid = function(){
  	return JSON.parse(localStorage[result+'_bid']).reverse();
 }
 BidInfo.Get_during_Activity_all_Bid = function(){
-    var result = Activity.get_during_activity.name;
+    var result = JSON.parse(localStorage['during_activity']).name;
     if(!localStorage[result+'_bid']){
         localStorage[result+'_bid']=JSON.stringify([]);
     }
@@ -220,7 +223,7 @@ BidInfo.get_activitiy_bid=function(argument){
     if(!localStorage[result]){
     	localStorage[result]=JSON.stringify([]);
     }
-    return getItemfromLocalstorage(result);
+    return getItemfromLocalstorage(result).reverse();
 
 }
 
