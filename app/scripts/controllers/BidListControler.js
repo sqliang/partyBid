@@ -12,7 +12,7 @@ angular.module('partyBidApp')
 
         var result = $routeParams.message;
   		$scope.button_enable=BidInfo.ButtonEnable();
-        $scope.allbid=BidInfo.get_activitiy_bid(result);
+        $scope.allbid=BidInfo.get_activitiy_bid(result).reverse();
         $scope.start_bid=function(){
         	var result= BidInfo.CreateNewBid();
         	BidInfo.save_current_bid_to_localstorage(result);

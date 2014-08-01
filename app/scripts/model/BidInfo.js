@@ -217,7 +217,10 @@ BidInfo.is_bid_on=function(){
 
 BidInfo.get_activitiy_bid=function(argument){
     var result = argument+'_bid';
-    return getItemfromLocalstorage(result).reverse();
+    if(!localStorage[result]){
+    	localStorage[result]=JSON.stringify([]);
+    }
+    return getItemfromLocalstorage(result);
 
 }
 
