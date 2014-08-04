@@ -48,7 +48,10 @@ angular
         .when('/bidsignup/:message', {
             templateUrl:'views/BIdSignUp.html',
             controller:'BidSignUpControl'
-
+         })
+        .when('/bidresult', {
+            templateUrl:'views/BidResult.html',
+            controller:'BidResultControl'
         })
       .otherwise({
         redirectTo: '/'
