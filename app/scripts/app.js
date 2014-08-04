@@ -49,7 +49,7 @@ angular
             templateUrl:'views/BIdSignUp.html',
             controller:'BidSignUpControl'
          })
-        .when('/bidresult', {
+        .when('/bidresult/:clicked_bid', {
             templateUrl:'views/BidResult.html',
             controller:'BidResultControl'
         })

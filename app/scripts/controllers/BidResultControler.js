@@ -9,5 +9,17 @@
  */
 angular.module('partyBidApp')
     .controller('BidResultControl', function ($scope,$location,$routeParams) {
+        var result =$routeParams.clicked_bid;
+
+        var result_messages=BidInfo.show_during_bid_user(result);
+        var result = BidResult.sort_by_price(result_messages);
+        $scope.all_bid_in_order = result;
+//        $scope.success_user= BidResult.bid_success_user(result);
+        BidResult.bid_success_user(result);
+
+        $scope.back_to_bid_item_page=function(){
+            var result = getItemfromLocalstorage('during_activity').name;
+            $location.path('/bidlist/'+result);
+        }
 
     });

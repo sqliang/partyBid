@@ -35,11 +35,12 @@ BidInfo.add_user_to_current_bid=function(argument){
 	var name = BidInfo.Get_Current_Bid_name();
 	var result=getItemfromLocalstorage(name);
 	var user_name = BidInfo.get_bid_user_name(argument.phone)
-	var current_bid = getItemfromLocalstorage('current_bid');	
+	var current_bid = getItemfromLocalstorage('current_bid');
+    var argument_price = parseInt(argument.price);
 	if(BidInfo.isSingUp(argument.phone)==true){
 		for(var i=0;i<result.length;i++){
 			if(result[i].name==current_bid){
-				result[i].messages.push({name:user_name,phone:argument.phone,price:argument.price});
+				result[i].messages.push({name:user_name,phone:argument.phone,price:argument_price});
 				localStorage[name]=JSON.stringify(result);
 				Message.back_message('bidsuccess',argument.phone);
 				refresh_bid_signup_page();
@@ -90,10 +91,6 @@ BidInfo.Get_during_Activity_all_Bid = function(){
         localStorage[result+'_bid']=JSON.stringify([]);
     }
     return JSON.parse(localStorage[result+'_bid']).reverse();
-}
-
-BidInfo.isRepeat=function(){
-
 }
 BidInfo.isSingUp=function(argument){
 	var result = User.get_current_activity_users();
@@ -236,4 +233,8 @@ BidInfo.show_during_bid_user =function(argument){
 		}
 	}
 	return ;
+}
+
+BidInfo.get_current_bid=function(){
+    return getItemfromLocalstorage('current_bid');
 }
