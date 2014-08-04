@@ -17,11 +17,15 @@ BidResult.bid_success_user = function (argument){
     var count_price = _.groupBy(argument,function(obj){
         return obj.price;
     })
+    BidResult.save_bid_count_price_user(count_price);
     var result =_.find(count_price,function(price){
         return price.length==1
     })
-    console.log(result);
+    return result;
 }
-//BidResult.wait_for_3_seconds=function (){
-//
-//}
+BidResult.save_bid_count_price_user=function(argument){
+    var result = _.map(argument, function(value,key ){
+        return {"price": key, "count": value.length}
+    })
+    localStorage['bid_result'] = JSON.stringify(result);
+}
