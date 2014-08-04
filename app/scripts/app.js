@@ -53,7 +53,7 @@ angular
             templateUrl:'views/BidResult.html',
             controller:'BidResultControl'
         })
-        .when('/bidcount', {
+        .when('/bidcount/:bid_success_user_price', {
             templateUrl:'views/BidCount.html',
             controller:'BidCountControl'
         })
