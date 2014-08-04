@@ -21,5 +21,8 @@ angular.module('partyBidApp')
             var result = getItemfromLocalstorage('during_activity').name;
             $location.path('/bidlist/'+result);
         }
+        $scope.back_to_count_page=function(){
+            $location.path('/bidcount');
+        }
 
     });

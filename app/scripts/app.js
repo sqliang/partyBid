@@ -53,6 +53,10 @@ angular
             templateUrl:'views/BidResult.html',
             controller:'BidResultControl'
         })
+        .when('/bidcount', {
+            templateUrl:'views/BidCount.html',
+            controller:'BidCountControl'
+        })
       .otherwise({
         redirectTo: '/'
       });

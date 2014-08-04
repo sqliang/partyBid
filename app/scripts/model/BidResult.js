@@ -29,3 +29,7 @@ BidResult.save_bid_count_price_user=function(argument){
     })
     localStorage['bid_result'] = JSON.stringify(result);
 }
+
+BidResult.get_bid_count_price_usernum = function(){
+    return JSON.parse(localStorage['bid_result']);
+}

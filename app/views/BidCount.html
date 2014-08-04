@@ -1,17 +1,16 @@
 <header class="header">
-    竞价结果
-    <button ng-show="true" class="btn btn-primary header-left" ng-click='back_to_bid_item_page()'>返回</button>
+    价格统计
+    <button ng-show="true" class="btn btn-primary header-left" ng-click='back_to_bid_list_page()'>返回</button>
     <button ng-show="true" ng-disabled="button_enable" class="btn btn-primary header-right" ng-click='
-    start_bid()'>统计</button>
+    back_to_bid_result_page()'>列表</button>
 </header>
 
 
 <div id="wrapper" class="wrapper">
     <ul class="list-style-2">
-        <li class="clearfix btn-default" ng-repeat="bid in all_bid_in_order track by $index" ng-click="choose_bid(bid)">
-            <!--<li class="clearfix btn-default">-->
-            <h3>{{1+$index}}&nbsp;&nbsp;&nbsp;{{bid.name}}</h3>
-            <i>{{bid.price}}</i>
+        <li class="clearfix btn-default" ng-repeat="bid in bidcounts track by $index" ng-click="choose_bid(bid)">
+            <h3>¥{{bid.price}}</h3>
+            <i>{{bid.count}}人</i>
         </li>
     </ul>
 </div>
