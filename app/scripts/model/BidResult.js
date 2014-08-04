@@ -2,17 +2,12 @@ function BidResult (){
 
 }
 
-BidResult.get_bid_user=function(){
-
-}
-
 BidResult.sort_by_price=function (argument){
     return _.sortBy(argument, function (list) {
         return list.price;
     })
 
 }
-
 BidResult.bid_success_user = function (argument){
     var count_price = _.groupBy(argument,function(obj){
         return obj.price;

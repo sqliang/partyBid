@@ -16,6 +16,23 @@ angular.module('partyBidApp')
         $scope.all_bid_in_order = result;
         var result = BidResult.bid_success_user(result);
         $scope.success_user=result[0];
+        $('#example').modal("show");
+
+        setTimeout(function(){
+             $scope.show_footer();
+        },3000);
+
+        $scope.show_footer = function(){
+            $('#example').modal('hide');
+            $scope.$apply(function(){
+                $scope.show_success_user=true;
+            })
+        }
+
+        $scope.show_footer_by_button=function(){
+            $scope.show_success_user=true;
+        }
+
         $scope.back_to_bid_item_page=function(){
             var result = getItemfromLocalstorage('during_activity').name;
             $location.path('/bidlist/'+result);
