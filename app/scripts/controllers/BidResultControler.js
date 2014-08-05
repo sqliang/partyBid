@@ -22,7 +22,7 @@ angular.module('partyBidApp')
         }
         else {
             $scope.modal_disp=true;
-            $scope.success_user = result[0];
+            $scope.success_user = bid_success_user[0];
             $scope.is_bid_success="竞价成功";
         }
         $('#example').modal("show");
@@ -48,7 +48,7 @@ angular.module('partyBidApp')
                 $location.path('/bidcount/' + 'fail');
             }
             else {
-                $location.path('/bidcount/' + result[0].price);
+                $location.path('/bidcount/' + bid_success_user[0].price);
             }
         }
 
