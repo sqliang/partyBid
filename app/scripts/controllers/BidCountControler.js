@@ -9,8 +9,8 @@
  */
 angular.module('partyBidApp')
     .controller('BidCountControl', function ($scope,$location,$routeParams) {
-        var result1 = $routeParams.bid_success_user_price;
-        console.log(result1);
+        var success_price = $routeParams.bid_success_user_price;
+        $scope.success_user = BidResult.get_bid_success_user_on_count_page(success_price);
         $scope.bidcounts=BidResult.get_bid_count_price_usernum();
         $scope.back_to_bid_list_page =function(){
             var result = getItemfromLocalstorage('during_activity').name;

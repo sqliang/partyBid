@@ -26,14 +26,10 @@ angular.module('partyBidApp')
             if(result=="unstart"){
                 activitystatus.changeactivitystart();
             }
-            if(result=="start"){
-                result = confirm("确认你结束本次报名吗？");
-                if(confirm("确认你结束本次报名吗？")){
+            if(result=="start" && confirm("确认你结束本次报名吗？")){
                     activitystatus.changeactivityend();
                     result = getItemfromLocalstorage('during_activity').name;
                     $location.path('/bidlist/'+result);
-                }
-
             }
             result = Activity.signup_page_button_status();
             $scope.signup_button_status = result;
