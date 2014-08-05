@@ -10,7 +10,6 @@
 angular.module('partyBidApp')
     .controller('BidResultControl', function ($scope,$location,$routeParams, $timeout) {
         var result = $routeParams.clicked_bid;
-        console.log(result);
         var result_messages = BidInfo.show_during_bid_user(result);
         result = BidResult.sort_by_price(result_messages);
         $scope.current_bid=BidInfo.get_current_bid();

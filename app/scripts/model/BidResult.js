@@ -42,20 +42,10 @@ BidResult.get_success_bid_user=function(argument){
 }
 
 BidResult.is_bid_success=function(argument){
-    if(argument==undefined){
-        return false;
-    }
-    else {
-       return true;
-    }
+    return !(argument==undefined)
 }
 
 BidResult.is_bid_fail=function(argument){
-    if(argument==undefined){
-        return true;
-    }
-    else {
-        return false;
-    }
+    return argument==undefined;
 
 }
