@@ -11,14 +11,9 @@ angular.module('partyBidApp')
     .controller('SignUpControl', function ($scope,$location) {
 
         var result=User.show();
-        if(result.length==0){
-            $scope.user_num='('+0+'人'+')';
-            $scope.users_data=result;
-        }
-        else{
-            $scope.user_num='('+result.length+'人'+')';
-            $scope.users_data=result;
-        }
+        $scope.user_num='('+result.length+'人'+')';         
+        $scope.users_data=result;
+
         $scope.during_activity_name = Activity.get_during_activity().name;
         $scope.signup_button_status = Activity.signup_page_button_status();
 
@@ -33,13 +28,10 @@ angular.module('partyBidApp')
             }
             if(result=="start"){
                 result = confirm("确认你结束本次报名吗？");
-                if(result==true){
+                if(confirm("确认你结束本次报名吗？")){
                     activitystatus.changeactivityend();
                     result = getItemfromLocalstorage('during_activity').name;
                     $location.path('/bidlist/'+result);
-                }
-                else {
-                    ;
                 }
 
             }

@@ -13,15 +13,12 @@ angular.module('partyBidApp')
         if(!Activity.get_all_activity().length){
             $location.path('/create');
         }
-        else {
-            $location.path('/item');
-        }
+
         $scope.activity_names=Activity.show();
         $scope.create_button_enable=Activity.create__enable_item_page();
         
 
         $scope.back_to_create_activity=function(){
-            var temp="hehe";
             $location.path('/create');
         }
         $scope.choose_activity =function(activity){
