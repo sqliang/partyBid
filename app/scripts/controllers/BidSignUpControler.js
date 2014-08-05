@@ -12,13 +12,6 @@ angular.module('partyBidApp')
   	  	var result = $routeParams.message;
         $scope.bid_end_button_enable = BidInfo.endbuttonisable(result);
         result = BidInfo.show_during_bid_user(result);
-
-        // if(result.length==0){
-        //     $scope.bid_num='('+0+'人'+')';
-        // }
-        // else{
-            
-        // }
         $scope.bid_num='('+result.length+'人'+')';
         $scope.bid_users = result;  	   
         
@@ -39,10 +32,6 @@ angular.module('partyBidApp')
           $location.path('/bidresult/'+clicked_bid);
 
       }
-      else {
-        ;
-      }
   	}
-    
 
   });
