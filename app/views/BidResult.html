@@ -16,7 +16,7 @@
     </ul>
 </div>
 
-<div id="example" class="modal fade modal-dialog " style="height: 202px;">
+<div id="example" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
             <a class="close" data-dismiss="modal" ng-click="show_footer_by_button()">×</a>
             <h3>竞价结果</h3>
@@ -34,11 +34,11 @@
 
 <footer>
     <div ng-show="show_success_user">
-        <h3 style="color:red">竞价结果:{{success_user.name}}&nbsp;&nbsp;&nbsp;¥{{success_user.price}}&nbsp;&nbsp;&nbsp;&nbsp;{{success_user.phone.slice(0,3)}}XXXX{{success_user.phone.slice(7)}}
-        </h3>
+        <h5>竞价结果:{{success_user.name}}&nbsp;&nbsp;&nbsp;¥{{success_user.price}}&nbsp;&nbsp;&nbsp;&nbsp;{{success_user.phone.slice(0,3)}}XXXX{{success_user.phone.slice(7)}}
+        </h5>
     </div>
     <div ng-show="show_fail_user">
-        <h3 style="color:red">竞价失败
-        </h3>
+        <h5>竞价失败
+        </h5>
     </div>
 </footer>
