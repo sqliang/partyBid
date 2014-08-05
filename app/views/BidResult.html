@@ -22,15 +22,23 @@
             <h3>竞价结果</h3>
         </div>
 
-        <div class="modal-body">
+        <div class="modal-body" ng-show="modal_disp" >
             <h4>{{success_user.name}}&nbsp;&nbsp;&nbsp;¥{{success_user.price}}</h4>
             <p>{{success_user.phone.slice(0,3)}}XXXX{{success_user.phone.slice(7)}}</p>
-            <p>竞价成功</p>
+        </div>
+        <div class="modal-body">
+            <p>{{is_bid_success}}</p>
         </div>
 </div>
+
+
 <footer>
     <div ng-show="show_success_user">
         <h3 style="color:red">竞价结果:{{success_user.name}}&nbsp;&nbsp;&nbsp;¥{{success_user.price}}&nbsp;&nbsp;&nbsp;&nbsp;{{success_user.phone.slice(0,3)}}XXXX{{success_user.phone.slice(7)}}
+        </h3>
+    </div>
+    <div ng-show="show_fail_user">
+        <h3 style="color:red">竞价失败
         </h3>
     </div>
 </footer>

@@ -40,3 +40,22 @@ BidResult.get_success_bid_user=function(argument){
     var messages = BidResult.get_current_bid_user();
     return _.find(messages,function(user){return user.price==argument});
 }
+
+BidResult.is_bid_success=function(argument){
+    if(argument==undefined){
+        return false;
+    }
+    else {
+       return true;
+    }
+}
+
+BidResult.is_bid_fail=function(argument){
+    if(argument==undefined){
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}

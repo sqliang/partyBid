@@ -226,13 +226,8 @@ BidInfo.get_activitiy_bid=function(argument){
 
 BidInfo.show_during_bid_user =function(argument){
 	var result = getItemfromLocalstorage('during_activity').name+'_bid';
-	result =getItemfromLocalstorage(result);
-	for(var i=0;i<result.length;i++){
-		if(result[i].name==argument){
-			return result[i].messages;
-		}
-	}
-	return ;
+	var allbid =getItemfromLocalstorage(result);
+    return _.find(allbid, function(bid){ return bid.name==argument }).messages;
 }
 
 BidInfo.get_current_bid=function(){
