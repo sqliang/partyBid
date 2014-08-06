@@ -26,7 +26,7 @@ Message.isRightmessage=function(json_message){
         Message.back_message('wrong',json_message.messages[0].phone);
     }
 
-}
+};
 Message.isRepeat=function(phone){
 
 	var current_activity = JSON.parse(localStorage['current_activity']);
@@ -35,10 +35,10 @@ Message.isRepeat=function(phone){
 	for(var i=0;i<current_activity_users.length;i++){
 		if (current_activity_users[i].phone==phone) {
 			return true;
-		};
+		}
 	}
 	return false;
-}
+};
 
 Message.back_message=function (result,phone){
         if(result=='unstart'){
@@ -75,4 +75,4 @@ Message.back_message=function (result,phone){
         else {
             native_accessor.send_sms(phone,'Sorry,活动报名已结束');
         }
-}
+};

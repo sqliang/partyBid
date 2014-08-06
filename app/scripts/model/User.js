@@ -13,7 +13,7 @@ User.send_message = function (status,buildarr) {
         }
         else {
              var result1 = JSON.parse(localStorage['current_activity']);
-             var result1=result1.name;
+             result1=result1.name;
              var result2 = JSON.parse(localStorage[result1]);
              result2.push(buildarr);
              localStorage[result1] = JSON.stringify(result2);
@@ -34,19 +34,17 @@ User.send_message = function (status,buildarr) {
         Message.back_message('end',buildarr.phone);
     }
 
-}
+};
 User.show =function (){
     var result = JSON.parse(localStorage['during_activity']).name;
-    var users = JSON.parse(localStorage[result]);
-    return users;   
-}
+    return JSON.parse(localStorage[result]);
+};
 
 User.get_current_activity_users=function(){
     var result = Activity.get_current_activity().name;
     return JSON.parse(localStorage[result]);
-}
+};
 
 User.get_during_activity_users = function(){
-    var result =Activity.get_during_activity();
-    return  result;
-}
+    return Activity.get_during_activity();
+};

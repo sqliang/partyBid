@@ -16,7 +16,6 @@ angular.module('partyBidApp')
             var result = $scope.activity_name;
             if (Activity.activity_repeat(result)) {
                 $scope.new_activity_name = "活动名称重复！";
-
             }
             else {
                 Activity.create(result);
@@ -24,7 +23,6 @@ angular.module('partyBidApp')
             }
 
         }
-
         $scope.back_to_activity_item_page = function () {
             $location.path('/item');
 
