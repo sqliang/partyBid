@@ -19,10 +19,10 @@ angular.module('partyBidApp')
             BidInfo.save_current_bid_to_localstorage(result);
             Activity.change_activity_status('onbid');
             $location.path('/bidsignup/' + result);
-        }
+        };
         $scope.choose_bid = function (click_bid) {
             $location.path('/bidsignup/' + click_bid.name);
-        }
+        };
         $scope.back_to_activity_item_page = function () {
             $location.path('/item');
         }

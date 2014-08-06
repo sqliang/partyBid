@@ -5,8 +5,7 @@ function User() {
 User.send_message = function (status,buildarr) {
 
     if(status=='start') {
-        var test_phone = buildarr.phone;
-        var is_repeat = Message.isRepeat(test_phone);
+        var is_repeat = Message.isRepeat(buildarr.phone);
         if (is_repeat==true) {
             Message.back_message('repeat',buildarr.phone);
 

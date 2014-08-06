@@ -21,7 +21,7 @@ angular.module('partyBidApp')
         var result = getItemfromLocalstorage('during_activity').name;
   		$location.path('/bidlist/'+result);
 
-  	}
+  	};
   	$scope.end_current_bid=function(){
       if(confirm("是否确实要终止此次竞价？")){
   		  BidInfo.end_current_bid();

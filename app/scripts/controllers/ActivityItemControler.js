@@ -20,7 +20,7 @@ angular.module('partyBidApp')
 
         $scope.back_to_create_activity = function () {
             $location.path('/create');
-        }
+        };
         $scope.choose_activity = function (activity) {
             localStorage['during_activity'] = JSON.stringify(activity);
             Activity.is_choose_same_activity();

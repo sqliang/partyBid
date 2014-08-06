@@ -60,7 +60,7 @@ BidInfo.SaveNewBid =function (argument) {
 };
 
 BidInfo.Get_Current_Bid_name=function (){
-	var result = Activity.get_current_activity().name+'_bid';
+	var result = Activity.get_current_activity().name;
 	return result+'_bid';
 };
 
@@ -120,8 +120,8 @@ BidInfo.get_bid_user_name =function(argument){
 
 BidInfo.endbuttonisable=function(current_bid){
     var during_activity_name=getItemfromLocalstorage('during_activity').name+'_bid';
-    var allbid = getItemfromLocalstorage(during_activity_name);
-    return _.find(allbid,function(num){return num.name==current_bid}).status;
+    var result = getItemfromLocalstorage(during_activity_name);
+    return _.find(result,function(num){return num.name==current_bid}).status;
 };
 BidInfo.isbidstart=function(argument){
 	var current_bid_length= BidInfo.Get_Current_Bid_length();
@@ -146,7 +146,7 @@ BidInfo.isbidstart=function(argument){
 		
 	}
 	
-}
+};
 
 BidInfo.get_current_bid_status=function(){
 	var current_bid = getItemfromLocalstorage('current_bid');
@@ -157,14 +157,14 @@ BidInfo.get_current_bid_status=function(){
 		}
 	}
 	return 'bidunstart';
-}
+};
 
 BidInfo.is_bid_repeat=function(argument){
     var current_bid = getItemfromLocalstorage('current_bid');
     var allbid = getItemfromLocalstorage(BidInfo.Get_Current_Bid_name());
     var messages=_.find(allbid,function(bid){return bid.name==current_bid}).messages;
     return _.find(messages,function(message){return message.phone==argument.phone});
-}
+};
 
 BidInfo.get_activitiy_bid=function(argument){
     var result = argument+'_bid';
@@ -173,14 +173,14 @@ BidInfo.get_activitiy_bid=function(argument){
     }
     return getItemfromLocalstorage(result).reverse();
 
-}
+};
 
 BidInfo.show_during_bid_user =function(argument){
 	var result = getItemfromLocalstorage('during_activity').name+'_bid';
 	var allbid =getItemfromLocalstorage(result);
     return _.find(allbid, function(bid){ return bid.name==argument }).messages;
-}
+};
 
 BidInfo.get_current_bid=function(){
     return getItemfromLocalstorage('current_bid');
-}
+};

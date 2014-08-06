@@ -22,7 +22,7 @@ angular.module('partyBidApp')
                 $location.path('/sign_up');
             }
 
-        }
+        };
         $scope.back_to_activity_item_page = function () {
             $location.path('/item');
 

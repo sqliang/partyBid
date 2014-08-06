@@ -23,7 +23,7 @@ angular.module('partyBidApp')
         $scope.back_to_bid_list_page = function () {
             var result = getItemfromLocalstorage('during_activity').name;
             $location.path('/bidlist/' + result);
-        }
+        };
 
         $scope.back_to_bid_result_page = function () {
             var clicked_bid = BidInfo.get_current_bid();
