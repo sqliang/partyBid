@@ -74,8 +74,7 @@ Activity.get_all_activity=function (){
 
 Activity.judgestatus = function (buildarr) {
 
-    var result = Activity.get_current_activity();
-    var result=result.status;
+    var result = Activity.get_current_activity().status;
     User.send_message(result,buildarr);
 
 }
