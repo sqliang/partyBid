@@ -15,19 +15,15 @@ angular.module('partyBidApp')
         }
 
         $scope.activity_names = Activity.show();
-        $scope.create_button_enable = Activity.create__enable_item_page();
+        $scope.create_button_enable = Activity.create_enable_item_page();
 
 
         $scope.back_to_create_activity = function () {
             $location.path('/create');
         }
         $scope.choose_activity = function (activity) {
-
             localStorage['during_activity'] = JSON.stringify(activity);
-            if (JSON.parse(localStorage['during_activity_or_not']) == "0") {
-                var result = JSON.parse(localStorage['during_activity']);
-                localStorage['current_activity'] = JSON.stringify(result);
-            }
+            Activity.is_choose_same_activity();
             $location.path('/sign_up');
         }
     });

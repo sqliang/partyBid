@@ -4,7 +4,6 @@
 <!--     <button ng-disabled="button_enable" class="btn btn-primary header-right" ng-click='start_activity_btn()'>{{start_done_btn}}</button> -->
     <div ng-switch="signup_button_status">
         <button ng-disabled="false" class="btn btn-primary header-right" ng-click='start_activity_btn()' ng-switch-when="unstart">开始</button>
-        <button ng-disabled="true" class="btn btn-primary header-right" ng-click='start_activity_btn()' ng-switch-when="onbid">结束</button>
         <button ng-disabled="false" class="btn btn-primary header-right" ng-click='start_activity_btn()' ng-switch-when="start">结束</button>
         <button ng-disabled="true" class="btn btn-primary header-right" ng-click='start_activity_btn()' ng-switch-when="end">结束</button>
         <button ng-disabled="true" class="btn btn-primary header-right" ng-click='start_activity_btn()' ng-switch-default="">开始</button>
