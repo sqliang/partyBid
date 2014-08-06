@@ -117,7 +117,7 @@ BidInfo.end_current_bid=function(){
 			localStorage[result]=JSON.stringify(allbid);
 		}
 	}
-	activitystatus.changeactivityend();
+    Activity.change_activity_status("end");
 
 }
 

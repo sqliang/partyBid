@@ -45,6 +45,26 @@ Activity.show=function(){
 }
 
 
+Activity.change_activity_status=function(status){
+
+    var allactivity= JSON.parse(localStorage['activitykey']);
+    var during_activity= JSON.parse(localStorage['during_activity']);
+    var during_activity_name = during_activity.name;
+    _.find(allactivity,function(activity){return activity.name==during_activity_name;}).status=status;
+    Activity.savetolocalstorage(during_activity,allactivity,status);
+}
+
+Activity.savetolocalstorage = function(during_activity,allactivity,status){
+    during_activity.status=status;
+    localStorage['activitykey']=JSON.stringify(allactivity);
+    localStorage['during_activity']=JSON.stringify(during_activity);
+    localStorage['current_activity']=JSON.stringify(during_activity);
+    localStorage['during_activity_or_not']=JSON.stringify('1');
+    if(status=="end"){
+        localStorage['during_activity_or_not']=JSON.stringify('0');
+    }
+
+}
 
 Activity.localStorage_length=function(){
     if(localStorage.length==0){

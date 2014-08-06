@@ -16,23 +16,20 @@ angular.module('partyBidApp')
 
         $scope.during_activity_name = Activity.get_during_activity().name;
         $scope.signup_button_status = Activity.signup_page_button_status();
-
         $scope.back_to_activity_item_page = function () {
             $location.path('/item');
 
         }
         $scope.start_activity_btn = function () {
-            var result = Activity.signup_page_button_status();
-            if (result == "unstart") {
-                activitystatus.changeactivitystart();
+            if (Activity.signup_page_button_status() == "unstart") {
+                Activity.change_activity_status('start');
             }
             if (result == "start" && confirm("确认你结束本次报名吗？")) {
-                activitystatus.changeactivityend();
+                Activity.change_activity_status('end');
                 result = getItemfromLocalstorage('during_activity').name;
                 $location.path('/bidlist/' + result);
             }
             result = Activity.signup_page_button_status();
             $scope.signup_button_status = result;
-
         }
     });
