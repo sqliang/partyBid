@@ -62,8 +62,6 @@ BidInfo.SaveNewBid =function (argument) {
 BidInfo.Get_Current_Bid_name=function (){
 	var result = Activity.get_current_activity().name;
 	return result+'_bid';
-
-
 }
 
 BidInfo.Get_Current_Bid_length=function(){
@@ -91,13 +89,8 @@ BidInfo.Get_during_Activity_all_Bid = function(){
     return JSON.parse(localStorage[result+'_bid']).reverse();
 }
 BidInfo.isSingUp=function(argument){
-	var result = User.get_current_activity_users();
-	for(var i=0;i<result.length;i++){
-		if(result[i].phone == argument){
-			return true;
-		}
-	}
-	return false;
+    var alluser = User.get_current_activity_users();
+    return _.find(alluser,function(user){return user.phone==argument});
 }
 
 BidInfo.save_current_bid_to_localstorage=function(argument){
