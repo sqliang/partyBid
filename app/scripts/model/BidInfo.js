@@ -5,12 +5,9 @@ function BidInfo (argument) {
 BidInfo.ButtonEnable = function(argument){
 	var result = BidInfo.Get_during_Activity_all_Bid();
     var during_bid_length =getItemfromLocalstorage(User.get_during_activity_users().name).length;
-    if(JSON.parse(localStorage['during_activity']).status=="start"){
+    if(during_bid_length==0 || JSON.parse(localStorage['during_activity']).status=="start"){
     	return true;
     }
-	if(during_bid_length==0){
-		return true;
-	}
 	for(var i=0;i<result.length;i++){
 		if(result[i].status=="start" ){
 			return true;
@@ -31,31 +28,32 @@ BidInfo.CreateNewBid =function (){
 }
 
 BidInfo.add_user_to_current_bid=function(argument){
-
-	var name = BidInfo.Get_Current_Bid_name();
-	var result=getItemfromLocalstorage(name);
-	var user_name = BidInfo.get_bid_user_name(argument.phone)
-	var current_bid = getItemfromLocalstorage('current_bid');
-    var argument_price = parseInt(argument.price);
-	if(BidInfo.isSingUp(argument.phone)==true){
-		for(var i=0;i<result.length;i++){
-			if(result[i].name==current_bid){
-				result[i].messages.push({name:user_name,phone:argument.phone,price:argument_price});
-				localStorage[name]=JSON.stringify(result);
-				Message.back_message('bidsuccess',argument.phone);
-				refresh_bid_signup_page();
-			}
-
-		}
-		
+	if(BidInfo.isSingUp(argument.phone)){
+            BidInfo.create_bid_user_message(argument);
 	}
 	else{
 		Message.back_message('nosignup',argument.phone);
 
 	}
-	
-	
 }
+
+BidInfo.create_bid_user_message=function(argument){
+	var user_name = BidInfo.get_bid_user_name(argument.phone)
+    var argument_price = parseInt(argument.price);
+    var message={name:user_name,phone:argument.phone,price:argument_price};
+    BidInfo.save_bid_user_message(message);
+}
+
+BidInfo.save_bid_user_message=function(message){
+    var name = BidInfo.Get_Current_Bid_name();
+    var current_all_bid=getItemfromLocalstorage(name);
+    var current_bid = getItemfromLocalstorage('current_bid');
+    _.find(current_all_bid,function(bid){return bid.name==current_bid}).messages.push(message);
+    localStorage[name]=JSON.stringify(current_all_bid);
+	Message.back_message('bidsuccess',message.phone);
+	refresh_bid_signup_page();
+}
+
 BidInfo.SaveNewBid =function (argument) {
 	var result =BidInfo.Get_Current_Bid_name();
 	localStorage[result]=JSON.stringify(argument);
@@ -201,16 +199,6 @@ BidInfo.is_bid_repeat=function(argument){
 			return true;
 		}
 
-	}
-	return false;
-}
-
-BidInfo.is_bid_on=function(){
-	var result = getItemfromLocalstorage(BidInfo.Get_Current_Bid_name());
-	for(var i=0;i<result.length;i++){
-		if(result[i].status=="start"){
-			return true;
-		}
 	}
 	return false;
 }
