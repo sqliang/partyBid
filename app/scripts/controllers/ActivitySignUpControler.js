@@ -17,7 +17,7 @@ angular.module('partyBidApp')
         $scope.during_activity_name = Activity.get_during_activity().name;
         $scope.signup_button_status = Activity.signup_page_button_status();
         $scope.back_to_activity_item_page = function () {
-            $location.path('/item');
+        $location.path('/item');
 
         };
         $scope.start_activity_btn = function () {
