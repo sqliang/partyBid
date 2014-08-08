@@ -29,7 +29,13 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      bower: {
+
+        jade: {
+            files: ['<%= yeoman.app %>/{,*/}*.jade'],
+            tasks: ['jade']
+        },
+
+        bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
@@ -62,6 +68,21 @@ module.exports = function (grunt) {
         ]
       }
     },
+      jade: {
+          compile: {
+              options: {
+                  client: false,
+                  pretty: true
+              },
+              files: [{
+                  cwd: "<%= yeoman.app %>/views",
+                  src: "*.jade",
+                  dest: ".tmp/views",
+                  expand: true,
+                  ext: ".html"
+              }]
+          }
+      },
 
     // The actual grunt server settings
     connect: {
@@ -299,40 +320,45 @@ module.exports = function (grunt) {
     },
 
     // Copies remaining files to places other tasks can use
-    copy: {
-      dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            '.htaccess',
-            '*.html',
-            'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
-            'fonts/*'
-          ]
-        }, {
-          expand: true,
-          cwd: '.tmp/images',
-          dest: '<%= yeoman.dist %>/images',
-          src: ['generated/*']
-        }, {
-          expand: true,
-          cwd: 'bower_components/bootstrap/dist',
-          src: 'fonts/*',
-          dest: '<%= yeoman.dist %>'
-        }]
+      copy: {
+          dist: {
+              files: [{
+                  expand: true,
+                  dot: true,
+                  cwd: '<%= yeoman.app %>',
+                  dest: '<%= yeoman.dist %>',
+                  src: [
+                      '*.{ico,png,txt}',
+                      '.htaccess',
+                      '*.html',
+                      'views/{,*/}*.html',
+                      'images/{,*/}*.{webp}',
+                      'fonts/*'
+                  ]
+              }, {
+                  expand: true,
+                  cwd: '.tmp',
+                  dest: '<%= yeoman.dist %>',
+                  src: ['{,*/}*.html']
+              }, {
+                  expand: true,
+                  cwd: '.tmp/images',
+                  dest: '<%= yeoman.dist %>/images',
+                  src: ['generated/*']
+              }, {
+                  expand: true,
+                  cwd: 'bower_components/bootstrap/dist',
+                  src: 'fonts/*',
+                  dest: '<%= yeoman.dist %>'
+              }]
+          },
+          styles: {
+              expand: true,
+              cwd: '<%= yeoman.app %>/styles',
+              dest: '.tmp/styles/',
+              src: '{,*/}*.css'
+          }
       },
-      styles: {
-        expand: true,
-        cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
-        src: '{,*/}*.css'
-      }
-    },
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
@@ -367,6 +393,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'jade',
       'concurrent:server',
 //      'autoprefixer',
       'connect:livereload',
@@ -390,6 +417,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'jade',
     'useminPrepare',
     'concurrent:dist',
 //    'autoprefixer',

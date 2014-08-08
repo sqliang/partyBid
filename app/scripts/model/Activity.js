@@ -16,7 +16,6 @@ Activity.create=function(new_activity_name){
 };
 
 Activity.save=function (result_object) {
-
 	var result = Activity.get_all_activity();
 	result.push(result_object);
     localStorage['activitykey']=JSON.stringify(result);
