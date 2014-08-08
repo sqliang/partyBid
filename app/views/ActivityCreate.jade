@@ -1,0 +1,11 @@
+header.header
+    button(ng-show="is_show_back_button",ng-click='back_to_activity_item_page()').btn.btn-primary.header-left
+.wrapper
+    br
+    h4 活动名称
+    input(type="text",ng-model="activity_name",placeholder="输入活动名称").input-full
+    br
+    br
+    h3(style="color:red") {{new_activity_name}}
+footer
+    button(ng-click="back_to_activity_SignUp_page()",ng-disabled="!activity_name").btn.btn-2 创建

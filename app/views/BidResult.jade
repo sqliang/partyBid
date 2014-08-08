@@ -1,0 +1,27 @@
+header.header
+    | {{current_bid}} ({{bid_user_num}}人)
+    button.btn.btn-primary.header-left(ng-show='true', ng-click='back_to_bid_item_page()') 返回
+    button.btn.btn-primary.header-right(ng-show='true', ng-disabled='button_enable', ng-click='\
+  back_to_count_page()') 统计
+#wrapper.wrapper
+    ul.list-style-2
+        li.clearfix.btn-default(ng-repeat='bid in all_bid_in_order track by $index', ng-click='choose_bid(bid)')
+            // <li class="clearfix btn-default">
+            h3 {{1+$index}}   {{bid.name}}  {{bid.phone.slice(0,3)}}XXXX{{bid.phone.slice(7)}}
+            i {{bid.price}}
+#example.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-header
+        a.close(data-dismiss='modal', ng-click='show_footer_by_button()') ×
+        h3 竞价结果
+    .modal-body(ng-show='modal_disp')
+        h4 {{success_user.name}}   ¥{{success_user.price}}
+        p {{success_user.phone.slice(0,3)}}XXXX{{success_user.phone.slice(7)}}
+    .modal-body
+        p {{is_bid_success}}
+footer
+    div(ng-show='show_success_user')
+        h5
+            | 竞价结果:{{success_user.name}}   ¥{{success_user.price}}    {{success_user.phone.slice(0,3)}}XXXX{{success_user.phone.slice(7)}}
+    div(ng-show='show_fail_user')
+        h5
+            | 竞价失败

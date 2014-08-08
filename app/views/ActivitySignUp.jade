@@ -1,0 +1,24 @@
+header.header 报名{{user_num}}
+    button(ng-show="true",ng-click='back_to_activity_item_page()').btn.btn-primary.header-left 返回
+    div(ng-switch="signup_button_status")
+        button(ng-disabled="false",ng-click='start_activity_btn()',ng-switch-when="unstart").btn.btn-primary.header-right 开始
+        button(ng-disabled="false",ng-click='start_activity_btn()',ng-switch-when="start").btn.btn-primary.header-right 结束
+        button(ng-disabled="true",ng-click='start_activity_btn()',ng-switch-when="end").btn.btn-primary.header-right 结束
+        button(ng-disabled="true",ng-click='start_activity_btn()',ng-switch-default="").btn.btn-primary.header-right 开始
+#refresh_user_num.wrapper
+    ul.list-style-2
+        li(ng-repeat="user in users_data").clearfix.btn-default
+            h3 {{user.name}}
+            i {{user.phone}}
+footer
+    ul.footer-nav.footer-nav-2tabs
+        li.active
+            a(href='javascript:', ng-disabled='true')
+                i.icon-group
+                br
+                | 报名
+        li
+            a(ng-href='#/bidlist/{{during_activity_name}}')
+                i.icon-list
+                br
+                | 竞价

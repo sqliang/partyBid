@@ -1,0 +1,13 @@
+header.header
+    | 竞价{{bid_num}}
+    button.btn.btn-primary.header-left(ng-show='true', ng-click='back_to_bid_item_page()') 返回
+    // <button  ng-disabled="buttonisable" class="btn btn-primary header-right" ng-click='end_current_bid()'>结束</button>
+    div(ng-switch='bid_end_button_enable')
+        button.btn.btn-primary.header-right(ng-switch-when='start', ng-disabled='false', ng-click='end_current_bid()') 结束
+        button.btn.btn-primary.header-right(ng-switch-default='end', ng-disabled='true', ng-click='end_current_bid()') 结束
+#wrapper.wrapper
+    ul.list-style-2
+        li.clearfix.btn-default(ng-repeat='user in bid_users track by $index')
+            // <li class="clearfix btn-default">
+            h3 {{1+$index}}   {{user.name}}
+            i {{user.phone}}

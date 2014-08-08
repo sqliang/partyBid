@@ -1,0 +1,17 @@
+header.header
+    | {{current_bid}} ({{bid_user_num}}人)
+    button.btn.btn-primary.header-left(ng-show='true', ng-click='back_to_bid_list_page()') 返回
+    button.btn.btn-primary.header-right(ng-show='true', ng-disabled='button_enable', ng-click='\
+  back_to_bid_result_page()') 列表
+#wrapper.wrapper
+    ul.list-style-2
+        li.clearfix.btn-default(ng-repeat='bid in bidcounts track by $index', ng-click='choose_bid(bid)')
+            h3 ¥{{bid.price}}
+            i {{bid.count}}人
+footer
+    div(ng-show='success_bid')
+        h5
+            | 竞价结果:{{success_user.name}}   ¥{{success_user.price}}    {{success_user.phone.slice(0,3)}}XXXX{{success_user.phone.slice(7)}}
+    div(ng-show='fail_bid')
+        h5
+            | 竞价失败

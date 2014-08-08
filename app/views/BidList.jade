@@ -1,0 +1,23 @@
+header.header
+    | 竞价列表
+    button.btn.btn-primary.header-left(ng-show='true', ng-click='back_to_activity_item_page()') 返回
+    button.btn.btn-primary.header-right(ng-show='true', ng-disabled='button_enable', ng-click='\
+  start_bid()') 开始
+#wrapper.wrapper
+    ul.list-style-2
+        li.clearfix.btn-default(ng-repeat='bid in allbid', ng-click='choose_bid(bid)')
+            // <li class="clearfix btn-default">
+            h3(class="{{bid.status}}") {{bid.name}}
+            i {{bid.phone}}
+footer
+    ul.footer-nav.footer-nav-2tabs
+        li
+            a(href='#/sign_up', ng-disabled='true')
+                i.icon-group
+                br
+                | 报名
+        li.active
+            a(href='javascript:')
+                i.icon-list
+                br
+                | 竞价
