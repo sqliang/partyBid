@@ -2,18 +2,12 @@ function BidInfo (argument) {
 	
 }
 
-BidInfo.ButtonEnable = function(argument){
+BidInfo.ButtonEnable = function(){
 	var result = BidInfo.Get_during_Activity_all_Bid();
     var during_bid_length =getItemfromLocalstorage(User.get_during_activity_users().name).length;
-    if(during_bid_length==0 || JSON.parse(localStorage['during_activity']).status=="start"){
-    	return true;
-    }
-	for(var i=0;i<result.length;i++){
-		if(result[i].status=="start" ){
-			return true;
-		}
-	}
-	return false;
+    var is_status_start = _.find(result,function(bid){return bid.status=="start"});
+    return (during_bid_length==0 || JSON.parse(localStorage['during_activity']).status=="start" || is_status_start);
+
 };
 
 BidInfo.CreateNewBid =function (){
@@ -95,7 +89,6 @@ BidInfo.isSingUp=function(argument){
 
 BidInfo.save_current_bid_to_localstorage=function(argument){
 	localStorage['current_bid'] = JSON.stringify(argument);
-	return ;
 };
 
 BidInfo.end_current_bid=function(){
