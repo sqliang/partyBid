@@ -19,7 +19,7 @@ angular.module('partyBidApp')
         $scope.back_to_activity_item_page = function () {
             $location.path('/item');
 
-        }
+        };
         $scope.start_activity_btn = function () {
             if (Activity.signup_page_button_status() == "unstart") {
                 Activity.change_activity_status('start');

@@ -37,12 +37,12 @@ angular.module('partyBidApp')
         $scope.show_footer_by_button = function () {
             $scope.show_success_user=BidResult.is_bid_success(bid_success_user);
             $scope.show_fail_user= BidResult.is_bid_fail(bid_success_user);
-        }
+        };
 
         $scope.back_to_bid_item_page = function () {
             var result = getItemfromLocalstorage('during_activity').name;
             $location.path('/bidlist/' + result);
-        }
+        };
         $scope.back_to_count_page = function () {
             if(bid_success_user==undefined){
                 $location.path('/bidcount/' + 'fail');
