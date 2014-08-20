@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name partyBidApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the partyBidApp
- */
 angular.module('partyBidApp')
     .controller('ItemControl', function ($scope,$location) {
 
@@ -14,16 +7,15 @@ angular.module('partyBidApp')
             $location.path('/create');
         }
 
-        $scope.activity_names = Activity.show();
-        $scope.create_button_enable = Activity.create_enable_item_page();
+        $scope.activity_names = Activity.get_all_activity();
+        $scope.create_button_enable = Activity.is_activity_on();
 
 
         $scope.back_to_create_activity = function () {
             $location.path('/create');
         };
-        $scope.choose_activity = function (activity) {
-            localStorage['during_activity'] = JSON.stringify(activity);
-            Activity.is_choose_same_activity();
-            $location.path('/sign_up');
+        $scope.choose_activity = function (chooseactivity) {
+            Activity.save_current_activity(chooseactivity)
+            $location.path('/sign_up/'+chooseactivity);
         }
     });

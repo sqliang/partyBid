@@ -22,6 +22,15 @@ Activity.get_all_activity=function(){
     return JSON.parse(localStorage['activitykey']);
 };
 
+Activity.save_current_activity=function(chooseactivity){
+    localStorage['current_activity']=JSON.stringify(chooseactivity);
+};
+
+Activity.is_activity_on = function(){
+    return _.some(Activity.get_all_activity(),function(activity){
+        return activity.signup=="start" || activity.bid=="start"});
+};
+
 Activity.is_repeat=function(newactivityname){
     return _.findWhere(Activity.get_all_activity(), {name:newactivityname});
 };
