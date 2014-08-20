@@ -16,7 +16,6 @@ User.send_message = function (status,buildarr) {
              var result2 = JSON.parse(localStorage[result1]);
              result2.push(buildarr);
              localStorage[result1] = JSON.stringify(result2);
-            //*************************************************
             Page_Refresh();
             Message.back_message('start',buildarr.phone);
 

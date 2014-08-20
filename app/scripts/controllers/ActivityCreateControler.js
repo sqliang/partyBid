@@ -13,15 +13,14 @@ angular.module('partyBidApp')
         $scope.is_show_back_button = Activity.is_show_back_item_button();
 
         $scope.back_to_activity_SignUp_page = function () {
-
-            var result = $scope.activity_name;
-            if (Activity.activity_repeat(result)) {
+            
+            if(!Activity.is_repeat()){
                 $scope.new_activity_name = "活动名称重复！";
+                return;
             }
-            else {
-                Activity.create(result);
-                $location.path('/sign_up');
-            }
+            var activity = new Activity($scope.activity_name);
+            activity.save();
+            $location.path('/sign_up');
 
         };
         $scope.back_to_activity_item_page = function () {
