@@ -34,7 +34,7 @@ angular
             controller: 'ItemControl'
         })
 
-        .when('/sign_up/:chosedactivity', {
+        .when('/sign_up/:chosedactivityname', {
             templateUrl: 'views/ActivitySignUp.html',
             controller: 'SignUpControl'
         })

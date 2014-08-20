@@ -34,7 +34,7 @@ User.send_message = function (status,buildarr) {
 
 };
 User.show =function (){
-    var result = JSON.parse(localStorage['during_activity']).name;
+    var result = JSON.parse(localStorage['current_activity']).name;
     return JSON.parse(localStorage[result]);
 };
 
