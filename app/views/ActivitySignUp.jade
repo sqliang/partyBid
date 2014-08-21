@@ -3,7 +3,7 @@ header.header 报名{{user_num}}
     div(ng-switch="signup_button_status")
         button(ng-disabled="false",ng-click='start_activity_btn()',ng-switch-when="unstart").btn.btn-primary.header-right 开始
         button(ng-disabled="false",ng-click='start_activity_btn()',ng-switch-when="start").btn.btn-primary.header-right 结束
-        button(ng-disabled="true",ng-click='start_activity_btn()',ng-switch-when="end").btn.btn-primary.header-right 结束
+        button(ng-disabled="false",ng-click='start_activity_btn()',ng-switch-when="end").btn.btn-primary.header-right 开始
         button(ng-disabled="true",ng-click='start_activity_btn()',ng-switch-default="").btn.btn-primary.header-right 开始
 #refresh_user_num.wrapper
     ul.list-style-2

@@ -4,5 +4,5 @@ header.header 活动列表
 .wrapper#wrapper
     ul.list-style-2
         li(ng-repeat="activity in activity_names track by $index",ng-click='choose_activity(activity)').clearfix.btn-default
-            h3(class="{{activity.status}}") {{activity.name}}
+            h3(class="{{activity.signup}}") {{activity.name}}
             i.icon-angle-right

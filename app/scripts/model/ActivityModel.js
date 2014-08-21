@@ -11,8 +11,7 @@ Activity.prototype.save =function(){
     Activity.add_activity_total(allactivity);
 };
 
-Activity.prototype.change_activity_status=function(){
-    var newstatus = this.signup=="unstart"? "start":"unstart";
+Activity.prototype.change_activity_status=function(newstatus){
     var allactivity = Activity.get_all_activity();
     _.findWhere(allactivity, {name:this.name}).signup=newstatus;
     Activity.add_activity_total(allactivity);
@@ -39,6 +38,22 @@ Activity.save_current_activity=function(chooseactivity){
 };
 Activity.get_current_activity=function(){
   return JSON.parse(localStorage['current_activity']);
+};
+
+Activity.signup_page_button_switch=function(chosedactivityname){
+    var chosedobjectsignup =  _.findWhere(Activity.get_all_activity(), {name:chosedactivityname}).signup;
+    if( !Activity.is_activity_on() && (chosedobjectsignup=="unstart" || chosedobjectsignup=="end") ){
+        return "unstart";
+    }
+    if( Activity.is_activity_on() && (chosedobjectsignup=="unstart" || chosedobjectsignup=="end")){
+        return 'no';
+    }
+    if(chosedobjectsignup=="start"){
+        return "start";
+    }
+    if(chosedobjectsignup=="onbid"){
+        return "end";
+    }
 };
 
 Activity.is_activity_on = function(){
