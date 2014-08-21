@@ -6,7 +6,7 @@ angular.module('partyBidApp')
         var activity_name = $routeParams.chosedactivityname;
         $scope.this_activity=Activity.find_activity_by_name(activity_name);
 
-        var result = SignUpInfo.show_bid_user();
+        var result = SignUpInfo.show_signup_user(activity_name);
         $scope.user_num = '(' + result.length + '人' + ')';
         $scope.users_data = result;
 

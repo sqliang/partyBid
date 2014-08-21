@@ -27,9 +27,9 @@ SignUpInfo.is_signup_repeat=function(telphone){
         return user.phone==telphone});
 };
 
-SignUpInfo.show_bid_user =function (){
-    var result = JSON.parse(localStorage['current_activity']).name;
-    return JSON.parse(localStorage[result]);
+SignUpInfo.show_signup_user =function (activityname){
+    var chosed_obj=Activity.find_activity_by_name(activityname).name;
+    return JSON.parse(localStorage[chosed_obj]);
 };
 
 SignUpInfo.update_current_activity_users=function(newusers){
