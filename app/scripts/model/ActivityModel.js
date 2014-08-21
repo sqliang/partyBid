@@ -7,8 +7,8 @@ function Activity (activity_name,signup,bid){
 Activity.prototype.save =function(){
     var allactivity=Activity.get_all_activity();
     allactivity.push(this);
-    Activity.add_activity(this);
-    Activity.add_activity_total(allactivity);
+    this.add_activity(this);
+    this.add_activity_total(allactivity);
 };
 
 Activity.prototype.change_activity_status=function(newstatus){
@@ -17,13 +17,10 @@ Activity.prototype.change_activity_status=function(newstatus){
     Activity.add_activity_total(allactivity);
     Activity.save_current_activity(_.findWhere(Activity.get_all_activity(), {name:this.name}));
 };
-
-Activity.add_activity=function(newactivity){
+Activity.prototype.add_activity=function(newactivity){
     localStorage[newactivity.name]=JSON.stringify([]);
-
 };
-Activity.add_activity_total=function(newallactivity){
-    console.log(newallactivity);
+Activity.prototype.add_activity_total=function(newallactivity){
     localStorage['activitykey'] = JSON.stringify(newallactivity);
 };
 
@@ -58,7 +55,7 @@ Activity.signup_page_button_switch=function(chosedactivityname){
 
 Activity.is_activity_on = function(){
     return _.some(Activity.get_all_activity(),function(activity){
-        return activity.signup=="start" || activity.bid=="start"});
+        return activity.signup=="start"});
 };
 Activity.find_activity_by_name = function(name){
     var found = _(Activity.get_all_activity()).findWhere({name: name}) || {};

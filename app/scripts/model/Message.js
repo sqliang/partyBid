@@ -13,8 +13,8 @@ Message.isRightmessage=function(json_message){
 	if(result_name.substring(0,2)=="bm"){
 		flag=1;
 	    var price = 0;
-        var signupuser = new SignUpInfo(name,telphone,price);
-        signupuser.save();
+        var Signupuser = new SignUpInfo(name,telphone,price);
+        Signupuser.save();
 
 	}
 	if(result_name.substring(0,2)=="jj"){
@@ -41,39 +41,18 @@ Message.isRepeat=function(phone){
 	return false;
 };
 
-Message.back_message=function (result,phone){
-        if(result=='unstart'){
-            native_accessor.send_sms(phone,'活动尚未开始,请稍后');
-        }
-        else if (result=='start'){
-            native_accessor.send_sms(phone,'恭喜！报名成功');
-        }
-        else if (result=='repeat'){
-            native_accessor.send_sms(phone,'你已报名成功！请勿重复报名!');
-
-        }
-        else if (result=='wrong'){
-            native_accessor.send_sms(phone,'您发送的信息有误！');
-        }
-        else if (result=='nosignup'){
-            native_accessor.send_sms(phone,'对不起，您没有报名此次活动！');
-        }
-        else if(result=="bidsuccess")
-        {
-        	native_accessor.send_sms(phone,'恭喜！您已出价成功');
-        }
-        else if(result=="bidunstart")
-        {
-            native_accessor.send_sms(phone,'对不起，竞价尚未开始！');
-        }
-        else if(result=="bidend")
-        {
-            native_accessor.send_sms(phone,'对不起，竞价已结束！');
-        }
-        else if (result=="bidrepeat"){
-            native_accessor.send_sms(phone,'您已成功出价，请勿重复出价');
-        }
-        else {
-            native_accessor.send_sms(phone,'Sorry,活动报名已结束');
-        }
+Message.back_message=function (phone, type, status){
+        var message_back = {
+            "register_start": "恭喜！报名成功！^o^",
+            "register_unstart": "活动尚未开始，请稍后~ >.<",
+            "register_end": "Sorry，活动报名已结束.. =.=",
+            "register_repeat": "您已经报过名了，请勿浪费短信费.. -_-||",
+            "bid_run": "恭喜！您已出价成功！^o^",
+            "bid_prepare": "竞价尚未开始，请稍后~ >.<",
+            "bid_over": "Sorry，活动竞价已结束.. =.=",
+            "bid_undefined": "对不起，您没有报名此次活动.. T.T",
+            "bid_repeat": "您已成功出价，请勿重复出价.. -_-||"
+        };
+    var text = message_back[type + '_' + status];
+    native_accessor.send_sms(phone,text);
 };
