@@ -23,7 +23,7 @@ Activity.add_activity=function(newactivity){
 
 };
 Activity.add_activity_total=function(newallactivity){
-
+    console.log(newallactivity);
     localStorage['activitykey'] = JSON.stringify(newallactivity);
 };
 
@@ -62,7 +62,7 @@ Activity.is_activity_on = function(){
 };
 Activity.find_activity_by_name = function(name){
     var found = _(Activity.get_all_activity()).findWhere({name: name}) || {};
-    return new Activity(found.name, found.register, found.bid);
+    return new Activity(found.name, found.signup, found.bid);
 };
 
 Activity.is_repeat=function(newactivityname){

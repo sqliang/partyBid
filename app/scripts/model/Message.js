@@ -13,8 +13,9 @@ Message.isRightmessage=function(json_message){
 	if(result_name.substring(0,2)=="bm"){
 		flag=1;
 	    var price = 0;
-	    var buildarr={name:name,phone:telphone,price:price};
-	    Activity.judgestatus(buildarr);
+        var signupuser = new SignUpInfo(name,telphone,price);
+        signupuser.save();
+
 	}
 	if(result_name.substring(0,2)=="jj"){
 		flag=1;

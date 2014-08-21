@@ -18,15 +18,15 @@ angular.module('partyBidApp')
         };
         $scope.start_activity_btn = function () {
 
-            var current_activity = Activity.get_current_activity();
-            if(current_activity.signup !="start"){
+            var activity = Activity.find_activity_by_name(activity_name);
+            if(activity.signup !="start"){
                 $scope.this_activity.change_activity_status("start");
             }
-            if (current_activity.signup == "start" && confirm("确认你结束本次报名吗？")) {
+            if (activity.signup == "start" && confirm("确认你结束本次报名吗？")) {
                 $scope.this_activity.change_activity_status("end");
-                $location.path('/bidlist/' + current_activity.name);
+//                $location.path('/bidlist/' + activity.name);
             }
-            $scope.signup_button_status = Activity.get_current_activity().signup;
+            $scope.signup_button_status = Activity.find_activity_by_name(activity_name).signup;
 
 
         }

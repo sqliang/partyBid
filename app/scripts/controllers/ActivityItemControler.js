@@ -15,7 +15,6 @@ angular.module('partyBidApp')
             $location.path('/create');
         };
         $scope.choose_activity = function (chooseactivity) {
-            Activity.save_current_activity(chooseactivity)
             $location.path('/sign_up/'+chooseactivity.name);
         }
     });
