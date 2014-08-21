@@ -1,20 +1,18 @@
-function Message (argument) {
-	this.name=argument;
-	// body...
+function Message (json_message) {
+    var result_name_origin=json_message.messages[0].message.replace(/\s/g,'');
+    this.type= result_name_origin.toLowerCase().substring(0,2);
+    this.name= result_name_origin.toLowerCase().slice(2);
+    this.phone = json_message.messages[0].phone;
 }
 
-Message.isRightmessage=function(json_message){
-	var result_name_origin=json_message.messages[0].message.replace(/\s/g,'');
-	var result_name=result_name_origin.toLowerCase();
-	var name = result_name.slice(2);
-    var telphone = json_message.messages[0].phone;
+Message.prototype.isRightmessage=function(json_message){
 
-	if(result_name.substring(0,2)=="bm"){
-        var Signupuser = new SignUpInfo(name,telphone);
+	if(this.type=="bm"){
+        var Signupuser = new SignUpInfo(this.name,this.phone);
         Signupuser.back_message();
 
 	}
-	if(result_name.substring(0,2)=="jj"){
+	if(this.type=="jj"){
 		var messages = {phone:telphone,price:name};
         BidInfo.isbidstart(messages);
 

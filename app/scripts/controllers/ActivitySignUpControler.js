@@ -24,7 +24,7 @@ angular.module('partyBidApp')
             }
             if (activity.signup == "start" && confirm("确认你结束本次报名吗？")) {
                 $scope.this_activity.change_activity_status("end");
-//                $location.path('/bidlist/' + activity.name);
+                $location.path('/bidlist/' + activity_name);
             }
             $scope.signup_button_status = Activity.find_activity_by_name(activity_name).signup;
 

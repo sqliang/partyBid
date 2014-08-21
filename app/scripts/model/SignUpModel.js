@@ -43,8 +43,3 @@ SignUpInfo.get_current_activity_users=function(){
 };
 
 
-SignUpInfo.get_current_activity_status=function(){
-
-};
-
-
