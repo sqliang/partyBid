@@ -3,7 +3,7 @@ function Page_Refresh () {
     if (refresh_page) {  
         var scope = angular.element(refresh_page).scope();  
         scope.$apply(function () {  
-        	var during_name= JSON.parse(localStorage['during_activity']).name;
+        	var during_name= JSON.parse(localStorage['current_activity']).name;
         	var result=JSON.parse(localStorage[during_name]);
             scope.users_data= result;
             scope.user_num='('+result.length+'人'+')';

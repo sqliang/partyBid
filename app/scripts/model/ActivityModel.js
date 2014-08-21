@@ -14,9 +14,10 @@ Activity.prototype.save =function(){
 Activity.prototype.change_activity_status=function(newstatus){
     var allactivity = Activity.get_all_activity();
     _.findWhere(allactivity, {name:this.name}).signup=newstatus;
-    Activity.add_activity_total(allactivity);
+    this.add_activity_total(allactivity);
     Activity.save_current_activity(_.findWhere(Activity.get_all_activity(), {name:this.name}));
 };
+
 Activity.prototype.add_activity=function(newactivity){
     localStorage[newactivity.name]=JSON.stringify([]);
 };

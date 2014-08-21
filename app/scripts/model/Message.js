@@ -8,26 +8,19 @@ Message.isRightmessage=function(json_message){
 	var result_name=result_name_origin.toLowerCase();
 	var name = result_name.slice(2);
     var telphone = json_message.messages[0].phone;
-    var flag=0;
-	//start with bm
+
 	if(result_name.substring(0,2)=="bm"){
-		flag=1;
-	    var price = 0;
-        var Signupuser = new SignUpInfo(name,telphone,price);
-        Signupuser.save();
+        var Signupuser = new SignUpInfo(name,telphone);
+        Signupuser.back_message();
 
 	}
 	if(result_name.substring(0,2)=="jj"){
-		flag=1;
 		var messages = {phone:telphone,price:name};
         BidInfo.isbidstart(messages);
 
 	}
-    if (flag==0){
-        Message.back_message('wrong',json_message.messages[0].phone);
-    }
-
 };
+
 Message.isRepeat=function(phone){
 
 	var current_activity = JSON.parse(localStorage['current_activity']);
@@ -53,6 +46,6 @@ Message.back_message=function (phone, type, status){
             "bid_undefined": "对不起，您没有报名此次活动.. T.T",
             "bid_repeat": "您已成功出价，请勿重复出价.. -_-||"
         };
-    var text = message_back[type + '_' + status];
-    native_accessor.send_sms(phone,text);
+        var text = message_back[type + '_' + status];
+        native_accessor.send_sms(phone,text);
 };

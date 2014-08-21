@@ -7,7 +7,7 @@ angular.module('partyBidApp')
             $location.path('/create');
         }
 
-        $scope.activity_names = Activity.get_all_activity();
+        $scope.activity_names = Activity.get_all_activity().reverse();
         $scope.create_button_enable = Activity.is_activity_on();
 
 
