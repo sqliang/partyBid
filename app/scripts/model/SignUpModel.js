@@ -42,4 +42,9 @@ SignUpInfo.get_current_activity_users=function(){
     return JSON.parse(localStorage[result]);
 };
 
+SignUpInfo.get_user_by_activity_name=function(activity_name)
+{
+    return JSON.parse(localStorage[activity_name]);
+}
+
 

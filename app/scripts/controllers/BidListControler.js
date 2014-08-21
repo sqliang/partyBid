@@ -1,24 +1,17 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name partyBidApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the partyBidApp
- */
 angular.module('partyBidApp')
   .controller('BidListControl', function ($scope,$location,$routeParams) {
 
-        var result = $routeParams.message;
-        $scope.button_enable = BidInfo.ButtonEnable(result);
-        $scope.allbid = BidInfo.get_activitiy_bid(result);
-
+        var chosed_activity = $routeParams.message;
+        $scope.this_activity=Activity.find_activity_by_name(chosed_activity);
+        $scope.allbid=Bid.get_chosed_activity_bid(chosed_activity);
+        $scope.button_enable = Bid.is_bid_on(chosed_activity);
+        $scope.chosed_activity=chosed_activity;
         $scope.start_bid = function () {
-            var result = BidInfo.CreateNewBid();
-            BidInfo.save_current_bid_to_localstorage(result);
-            Activity.change_activity_status('onbid');
-            $location.path('/bidsignup/' + result);
+            var newbidname=Bid.CreateNewBid(chosed_activity);
+            $scope.this_activity.change_activity_status("onbid");
+            $location.path('/bidsignup/' + newbidname);
         };
         $scope.choose_bid = function (click_bid) {
             $location.path('/bidsignup/' + click_bid.name);

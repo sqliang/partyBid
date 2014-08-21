@@ -13,6 +13,7 @@ angular.module('partyBidApp')
             }
             var activity = new Activity($scope.activity_name);
             Activity.save_current_activity(activity);
+            Activity.save_clicked_activity(activity);
             activity.save();
             $location.path('/sign_up');
 

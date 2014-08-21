@@ -17,8 +17,6 @@ BidInfo.CreateNewBid =function (){
     all_bid.push(newobject);
 	BidInfo.SaveNewBid(all_bid);
 	return newobject.name;
-
-
 };
 
 BidInfo.add_user_to_current_bid=function(user){

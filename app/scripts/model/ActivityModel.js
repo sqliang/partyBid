@@ -37,6 +37,12 @@ Activity.save_current_activity=function(chooseactivity){
 Activity.get_current_activity=function(){
   return JSON.parse(localStorage['current_activity']);
 };
+Activity.save_clicked_activity=function(chooseactivity){
+    localStorage['clicked_activity']=JSON.stringify(chooseactivity);
+};
+Activity.get_clicked_activity=function(){
+    return JSON.parse(localStorage['clicked_activity']);
+};
 
 Activity.signup_page_button_switch=function(chosedactivityname){
     var chosedobjectsignup =  _.findWhere(Activity.get_all_activity(), {name:chosedactivityname}).signup;
