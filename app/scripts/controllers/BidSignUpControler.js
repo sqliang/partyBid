@@ -10,7 +10,6 @@ angular.module('partyBidApp')
 
   	$scope.back_to_bid_item_page=function(){
         var clicked_activity_name = JSON.parse(localStorage['clicked_activity']).name;
-        console.log(clicked_activity_name);
   		$location.path('/bidlist/'+clicked_activity_name);
 
   	};
@@ -18,8 +17,7 @@ angular.module('partyBidApp')
       if(confirm("是否确实要终止此次竞价？")){
           Bid.end_current_bid(current_bid_name);
           $scope.bid_end_button_enable = Bid.endbuttonisable(current_bid_name);
-//          var clicked_bid = BidInfo.get_current_bid();
-//          $location.path('/bidresult/'+clicked_bid);
+          $location.path('/bidresult/'+current_bid_name);
 
       }
   	}

@@ -2,8 +2,8 @@ function BidResult (){
 
 }
 
-BidResult.sort_by_price=function (argument){
-    return _.sortBy(argument, function (list) {
+BidResult.sort_by_price=function (bid_name){
+    return _.sortBy(Bid.find_clicked_bid_messages(bid_name), function (list) {
         return list.price;
     })
 

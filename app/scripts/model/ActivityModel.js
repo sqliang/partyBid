@@ -5,10 +5,10 @@ function Activity (activity_name,signup,bid){
 }
 
 Activity.prototype.save =function(){
-    var allactivity=Activity.get_all_activity();
-    allactivity.push(this);
+    var all_activity=Activity.get_all_activity();
+    all_activity.push(this);
     this.add_activity(this);
-    this.add_activity_total(allactivity);
+    this.add_activity_total(all_activity);
 };
 
 Activity.prototype.change_activity_status=function(newstatus){

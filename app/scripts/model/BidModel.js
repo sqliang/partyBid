@@ -18,7 +18,7 @@ Bid.prototype.chose_load_by_status=function(){
     if(this.name=="noname"){
         status="undefined";
     }
-    if(!Bid.is_bid_start()){status="over"};
+    if(!Bid.is_bid_start()){status="over"}
     if(Bid.is_bid_start() && Bid.is_repeat_bid(this.phone)){status="repeat"}
     if(Bid.is_bid_start() && !Bid.is_repeat_bid(this.phone) && (this.name!="noname")){
         this.save();

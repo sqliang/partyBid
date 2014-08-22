@@ -2,14 +2,12 @@
 
 angular.module('partyBidApp')
     .controller('BidResultControl', function ($scope,$location,$routeParams, $timeout) {
-        var result = $routeParams.clicked_bid;
-        var result_messages = BidInfo.show_during_bid_user(result);
-        result = BidResult.sort_by_price(result_messages);
-        $scope.current_bid=BidInfo.get_current_bid();
-        $scope.bid_user_num = BidResult.get_current_bid_user().length;
-        $scope.all_bid_in_order = result;
-
-        var bid_success_user = BidResult.bid_success_user(result);
+        var bid_name = $routeParams.clicked_bid;
+        var user_in_order=BidResult.sort_by_price(bid_name);
+        $scope.current_bid=bid_name;
+        $scope.bid_user_num = user_in_order.length;
+        $scope.all_bid_in_order = user_in_order;
+        var bid_success_user = BidResult.bid_success_user(user_in_order);
         if(bid_success_user==undefined){
             $scope.is_bid_success="竞价失败";
         }
@@ -33,15 +31,14 @@ angular.module('partyBidApp')
         };
 
         $scope.back_to_bid_item_page = function () {
-            var result = getItemfromLocalstorage('during_activity').name;
-            $location.path('/bidlist/' + result);
+            $location.path('/bidlist/' + Activity.get_clicked_activity().name);
         };
         $scope.back_to_count_page = function () {
             if(bid_success_user==undefined){
-                $location.path('/bidcount/' + 'fail');
+                $location.path('/bidcount/' + 'fail'+"/"+bid_name);
             }
             else {
-                $location.path('/bidcount/' + bid_success_user[0].price);
+                $location.path('/bidcount/' + bid_success_user[0].price+"/"+bid_name);
             }
         }
 
