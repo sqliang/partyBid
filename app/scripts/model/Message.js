@@ -17,20 +17,6 @@ Message.prototype.isRightmessage=function(json_message){
         biduser.chose_load_by_status()
 	}
 };
-
-Message.isRepeat=function(phone){
-
-	var current_activity = JSON.parse(localStorage['current_activity']);
-	var current_activity_name = current_activity.name;
-	var current_activity_users = JSON.parse(localStorage[current_activity_name]);
-	for(var i=0;i<current_activity_users.length;i++){
-		if (current_activity_users[i].phone==phone) {
-			return true;
-		}
-	}
-	return false;
-};
-
 Message.back_message=function (phone, type, status){
         var message_back = {
             "register_start": "恭喜！报名成功！^o^",
