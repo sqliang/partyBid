@@ -1,6 +1,11 @@
-function Bid(){
+function Bid(phone,price){
+    this.name=Bid.find_name_by_phone(phone);
+    this.phone=phone;
+    this.price= price;
 }
-
+Bid.prototype.save=function(){
+    console.log(this);
+};
 
 Bid.CreateNewBid =function (activity_name){
     var all_bid=Bid.get_chosed_activity_bid(activity_name).reverse();
@@ -47,6 +52,20 @@ Bid.is_bid_on=function(activity_name){
 
 Bid.endbuttonisable=function(bid_name){
     var click_name = Activity.get_clicked_activity().name;
-    var allbid=Bid.get_chosed_activity_bid(click_name);
-    return _.find(allbid,function(bid){return bid.name==bid_name}).status;
+    return _.find(Bid.get_chosed_activity_bid(click_name),function(bid){return bid.name==bid_name}).status;
+};
+
+Bid.find_onbid_bid=function(){
+    var activity_name=Activity.get_onbid_activity().name;
+    return _.find(Bid.get_chosed_activity_bid(activity_name),function(bid){return bid.status=="start"});
+};
+Bid.find_clicked_bid_messages=function(bid_name){
+    var activity_name=Activity.get_clicked_activity().name;
+    var result = Bid.get_chosed_activity_bid(activity_name);
+    _.find(result,function(bid){return bid.name==bid_name});
+
+};
+Bid.find_name_by_phone=function(phone){
+   var activity= Activity.get_current_activity().name;
+    return _.find(SignUpInfo.get_user_by_activity_name(activity),function(user){return user.phone==phone}).name;
 };

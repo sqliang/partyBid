@@ -73,4 +73,7 @@ Activity.is_repeat=function(newactivityname){
 Activity.is_show_back_item_button =function (){
     return Activity.get_all_activity();
 };
-
+Activity.get_onbid_activity=function(){
+    var allactivity=Activity.get_all_activity();
+    return _.find(allactivity,function(activity){return activity.signup=="onbid"});
+};

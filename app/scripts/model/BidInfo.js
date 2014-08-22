@@ -1,5 +1,4 @@
 function BidInfo () {
-	
 }
 
 BidInfo.ButtonEnable = function(){
