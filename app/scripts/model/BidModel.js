@@ -4,7 +4,9 @@ function Bid(phone,price){
     this.price= price;
 }
 Bid.prototype.save=function(){
-    console.log(this);
+    if(!Bid.is_bid_on(Activity.get_current_activity().name)){
+        Message.back_message(this.phone,'bid',"prepare");
+    }
 };
 
 Bid.CreateNewBid =function (activity_name){
@@ -49,6 +51,10 @@ Bid.is_bid_on=function(activity_name){
     return _.some(Bid.get_chosed_activity_bid(activity_name),function(bid){
         return bid.status=="start"});
 };
+Bid.is_bid_start=function(bid_name){
+    return Bid.get_chosed_activity_bid();
+
+};
 
 Bid.endbuttonisable=function(bid_name){
     var click_name = Activity.get_clicked_activity().name;
@@ -69,3 +75,4 @@ Bid.find_name_by_phone=function(phone){
    var activity= Activity.get_current_activity().name;
     return _.find(SignUpInfo.get_user_by_activity_name(activity),function(user){return user.phone==phone}).name;
 };
+

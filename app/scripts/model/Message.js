@@ -13,12 +13,8 @@ Message.prototype.isRightmessage=function(json_message){
 
 	}
 	if(this.type=="jj"){
-//		var messages = {phone:telphone,price:name};
-//        BidInfo.isbidstart(messages);
         var biduser = new Bid(this.phone,this.name);
         biduser.save();
-
-
 	}
 };
 

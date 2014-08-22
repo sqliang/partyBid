@@ -19,6 +19,9 @@ SignUpInfo.prototype.back_message = function(){
         this.save();
         Page_Refresh();
     }
+    if(status=="onbid") {
+        status="end";
+    }
     Message.back_message(this.phone,'register',status);
 };
 
