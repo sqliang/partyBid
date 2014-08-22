@@ -14,7 +14,7 @@ Message.prototype.isRightmessage=function(json_message){
 	}
 	if(this.type=="jj"){
         var biduser = new Bid(this.phone,this.name);
-        biduser.save();
+        biduser.chose_load_by_status()
 	}
 };
 
