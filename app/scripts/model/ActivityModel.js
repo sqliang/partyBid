@@ -46,23 +46,20 @@ Activity.get_clicked_activity=function(){
 
 Activity.signup_page_button_switch=function(chosedactivityname){
     var chosedobjectsignup =  _.findWhere(Activity.get_all_activity(), {name:chosedactivityname}).signup;
-    if( !Activity.is_activity_on() && (chosedobjectsignup=="unstart" || chosedobjectsignup=="end") ){
+    if((chosedobjectsignup=="unstart" || chosedobjectsignup=="end") && !Activity.is_activity_on()){
         return "unstart";
     }
-    if( Activity.is_activity_on() && (chosedobjectsignup=="unstart" || chosedobjectsignup=="end")){
-        return 'no';
-    }
-    if(chosedobjectsignup=="start"){
+    if(chosedobjectsignup=="start" && Activity.is_activity_on()){
         return "start";
     }
     if(chosedobjectsignup=="onbid"){
-        return "end";
+        return "onbid";
     }
 };
 
 Activity.is_activity_on = function(){
     return _.some(Activity.get_all_activity(),function(activity){
-        return activity.signup=="start"});
+        return activity.signup=="start" || activity.signup=="onbid"});
 };
 Activity.find_activity_by_name = function(name){
     var found = _(Activity.get_all_activity()).findWhere({name: name}) || {};
