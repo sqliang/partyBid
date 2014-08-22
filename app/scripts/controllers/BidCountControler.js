@@ -22,8 +22,7 @@ angular.module('partyBidApp')
         $scope.current_bid=bid_name;
         $scope.bid_user_num = BidResult.sort_by_price(bid_name).length;
         $scope.back_to_bid_list_page = function () {
-            var result = getItemfromLocalstorage('clicked_activity').name;
-            $location.path('/bidlist/' + result);
+            $location.path('/bidlist/' + JSON.parse(localStorage['clicked_activity']).name);
         };
 
         $scope.back_to_bid_result_page = function () {
