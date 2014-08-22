@@ -14,17 +14,20 @@ Bid.prototype.save=function(){
 };
 
 Bid.prototype.chose_load_by_status=function(){
-    var status = "prepare";
+    var status;
     if(this.name=="noname"){
         status="undefined";
     }
     if(!Bid.is_bid_start()){status="over"}
     if(Bid.is_bid_start() && Bid.is_repeat_bid(this.phone)){status="repeat"}
-    if(Bid.is_bid_start() && !Bid.is_repeat_bid(this.phone) && (this.name!="noname")){
-        this.save();
-        refresh_bid_signup_page();
-        status="run";
-    }
+//    if(Bid.is_bid_start() && !Bid.is_repeat_bid(this.phone) && (this.name!="noname")){
+//        this.save();
+//        refresh_bid_signup_page();
+//        status="run";
+//    }
+//    if(!Bid.get_chosed_activity_bid(Activity.get_clicked_activity().name).length){
+//        status = "prepare";
+//    }
     Message.back_message(this.phone,'bid',status);
 };
 Bid.CreateNewBid =function (activity_name){
